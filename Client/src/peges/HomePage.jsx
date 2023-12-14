@@ -1,12 +1,7 @@
-import React from 'react';
-import Carrousel from  '../components/Carrousel';
-import Seccion1 from '../components/Seccion1';
+import Carrousel from "../components/Carrousel";
 
 const HomePage = () => {
-    return (
-       <Carrousel />
-    
-    );
+  return <Carrousel />;
 };
 
 export default HomePage;
