@@ -1,9 +1,4 @@
-import {
-  GET_ALL_USERS,
-  GET_USER,
-  UPDATE_USER,
-  DELETE_USER,
-} from "./action-types";
+import { GET_ALL_USERS, GET_USER } from "./action-types";
 import axios from "axios";
 
 const URL = "http://localhost:3000";
