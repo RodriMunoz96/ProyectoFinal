@@ -1,11 +1,12 @@
 import React from 'react';
 import Carrousel from  '../components/Carrousel';
-import Seccion1 from '../components/Seccion1';
+import PorqueElegir from '../components/PorqueElegir';
+
 
 const HomePage = () => {
     return (
-       <Carrousel />
-    
+       <><Carrousel />
+       <PorqueElegir /></>
     );
 };
 
