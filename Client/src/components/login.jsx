@@ -1,9 +1,12 @@
-import React from "react";
+//import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 function Login() {
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
       <Form className="p-4 border rounded">
         <h3 className="text-center mb-4">Sign In</h3>
 
@@ -30,12 +33,10 @@ function Login() {
         <p className="forgot-password text-right mt-3">
           Forgot <a href="#">password?</a>
         </p>
-        <p className="forgot-password text-right mt-3">
-         No está registrado?
-        </p>
+        <p className="forgot-password text-right mt-3">No está registrado?</p>
         <div className="d-grid">
           <Button variant="primary" type="submit">
-           Registrarse
+            Registrarse
           </Button>
         </div>
       </Form>
