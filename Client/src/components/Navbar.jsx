@@ -14,7 +14,7 @@ function Navbar1() {
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#link">Link</Nav.Link>
             <NavDropdown title="El Colegio" id="basic-nav-dropdown">
-              <NavDropdown.Item href="./login">Quiénes somos </NavDropdown.Item>
+              <NavDropdown.Item href="../pages/QuienesSomos.jsx">Quiénes somos </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
               Nuestra Oferta Educativa
               </NavDropdown.Item>
