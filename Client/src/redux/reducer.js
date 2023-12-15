@@ -1,23 +1,26 @@
-// Importa los tipos de acciones definidos previamente
 import {
-  CREATE_STUDENT,
+  GET_ALL_USERS,
+  GET_USER,
+  UPDATE_USER,
+  DELETE_USER,
+  GET_STUDENT,
   GET_ALL_STUDENTS,
-  GET_STUDENT_BY_ID,
-  UPDATE_STUDENT_BY_ID,
-  DELETE_STUDENT_BY_ID,
-  GET_STUDENT_BY_NAME,
-  CLEAR_STUDENT_DETAIL,
-  BY_GRADE,
-  BY_PARENT,
-  BY_TEACHER,
-  BY_SUBJECT,
-} from './action-types';
+  UPDATE_STUDENT,
+  DELETE_STUDENT,
+  GET_ALL_PARENTS,
+  GET_PARENT,
+  UPDATE_PARENT,
+  DELETE_PARENT,
+} from "./action-types";
 
 // Define el estado inicial del almacenamiento Redux para estudiantes
 const initialState = {
-  students: [], // Lista de todos los estudiantes
-  filteredStudents: [], // Lista de estudiantes filtrados (resultado de filtros y ordenamientos)
-  detailStudent: {}, // Detalles de un estudiante específico
+  allUsers: [],
+  user: {},
+  allStudents: [],
+  student: {},
+  allParents: [],
+  parent: {},
 };
 
 // Define el reducer que gestionará las acciones y actualizará el estado
@@ -92,6 +95,68 @@ const studentReducer = (state = initialState, action) => {
       return {
         ...state,
         filteredStudents: filteredBySubject,
+      };
+
+    case UPDATE_USER:
+      return {
+        ...state,
+        user: payload,
+      };
+
+    case DELETE_USER:
+      return {
+        ...state,
+        allUsers: state.allUsers.filter((user) => user.id !== payload),
+      };
+
+    case GET_STUDENT:
+      return {
+        ...state,
+        student: payload,
+      };
+
+    case GET_ALL_STUDENTS:
+      return {
+        ...state,
+        allStudents: payload,
+      };
+
+    case UPDATE_STUDENT:
+      return {
+        ...state,
+        student: payload,
+      };
+
+    case DELETE_STUDENT:
+      return {
+        ...state,
+        allStudents: state.allStudents.filter(
+          (student) => student.id !== payload
+        ),
+      };
+
+    case GET_PARENT:
+      return {
+        ...state,
+        parent: payload,
+      };
+
+    case GET_ALL_PARENTS:
+      return {
+        ...state,
+        allParents: payload,
+      };
+
+    case UPDATE_PARENT:
+      return {
+        ...state,
+        parent: payload,
+      };
+
+    case DELETE_PARENT:
+      return {
+        ...state,
+        allParents: state.allParents.filter((parent) => parent.id !== payload),
       };
 
     default:
