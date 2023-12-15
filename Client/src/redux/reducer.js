@@ -45,7 +45,7 @@ const studentReducer = (state = initialState, action) => {
       };
 
     // Otras acciones para actualizar, eliminar, buscar por nombre, limpiar detalles y filtros...
-   
+    
 
     case CLEAR_STUDENT_DETAIL:
       // Borra los detalles del estudiante (se utiliza para limpiar los detalles)
