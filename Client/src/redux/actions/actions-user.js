@@ -24,14 +24,10 @@ export const getAllUsers = () => {
     try {
       const { data } = await axios.get(URL);
 
-      if (!data.length) throw Error("No hay usuarios");
-      else {
-        console.log(data);
-        return dispatch({
-          type: GET_ALL_USERS,
-          payload: data,
-        });
-      }
+      return dispatch({
+        type: GET_ALL_USERS,
+        payload: data,
+      });
     } catch (error) {
       return error.message;
     }
