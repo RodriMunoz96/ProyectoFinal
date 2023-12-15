@@ -25,6 +25,7 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         allStudents: payload,
       };
+
     default:
       return state;
   }
