@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import style from './formParent.module.css'
+import { createParent } from '../../../redux/actions/actions-parents.js';
 
 const FormParent = () => {
     const dispatch = useDispatch()
@@ -14,11 +15,12 @@ const FormParent = () => {
         jobAddress: "",
         telephone: "",
         jobTelephone: "",
-        contactCellPhone: "",
-        email: ""
+        contactCellphone: "",
+        email: "",
+        tutor: true,
     })
 
-    const onChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target
         
         setNewParent({
@@ -27,8 +29,10 @@ const FormParent = () => {
         })
     }
 
-    const onSubmit = () => {
-        // dispatch(registerParent(newParent))
+    const onSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(createParent({...newParent}))
 
         setNewParent({
             idDoc: "", //image
@@ -40,8 +44,9 @@ const FormParent = () => {
             jobAddress: "",
             telephone: "",
             jobTelephone: "",
-            contactCellPhone: "",
-            email: ""
+            contactCellphone: "",
+            email: "",
+            tutor: true
         })
     }
 
@@ -52,40 +57,40 @@ const FormParent = () => {
                     <h1>Información general del Apoderado</h1>
                 </nav>
                 <div className={style.container_label_inputs}>
-                    <label htmlFor="id-doc">Documento de identidad:</label>
-                    <input value={newParent.idDoc} onChange={onChange} type="text" name='id-doc'/>
+                    <label htmlFor="idDoc">Documento de identidad:</label>
+                    <input value={newParent.idDoc} onChange={handleChange} type="text" name='idDoc'/>
 
                     <label htmlFor="name">Nombre:</label>
-                    <input value={newParent.name} onChange={onChange} type="text" name='name'/>
+                    <input value={newParent.name} onChange={handleChange} type="text" name='name'/>
 
-                    <label htmlFor="last-name">Apellido:</label>
-                    <input value={newParent.lastName} onChange={onChange} type="text" name='last-name'/>
+                    <label htmlFor="lastName">Apellido:</label>
+                    <input value={newParent.lastName} onChange={handleChange} type="text" name='lastName'/>
 
-                    <label htmlFor="education-level">Nivel educacional:</label>
-                    <input value={newParent.educationLevel} onChange={onChange} type="text" name='education-level'/>
+                    <label htmlFor="educationLevel">Nivel educacional:</label>
+                    <input value={newParent.educationLevel} onChange={handleChange} type="text" name='educationLevel'/>
 
                     <label htmlFor="profession">Profesión:</label>
-                    <input value={newParent.profession} onChange={onChange} type="text" name='profession'/>
+                    <input value={newParent.profession} onChange={handleChange} type="text" name='profession'/>
 
                     <label htmlFor="address">Dirección del Hogar:</label>
-                    <input value={newParent.address} onChange={onChange} type="text" name='address'/>
+                    <input value={newParent.address} onChange={handleChange} type="text" name='address'/>
 
-                    <label htmlFor="job-address">Dirección del Trabajo: </label>
-                    <input value={newParent.jobAddress} onChange={onChange} type="text" name='job-address'/>
+                    <label htmlFor="jobAddress">Dirección del Trabajo: </label>
+                    <input value={newParent.jobAddress} onChange={handleChange} type="text" name='jobAddress'/>
 
                     <label htmlFor="telephone">Télefono del hogar:</label>
-                    <input value={newParent.telephone} onChange={onChange} type="number" name='telephone'/>
+                    <input value={newParent.telephone} onChange={handleChange} type="text" name='telephone'/>
 
-                    <label htmlFor="job-telephone">Télefono del trabajo:</label>
-                    <input value={newParent.jobTelephone} onChange={onChange} type="number" />
+                    <label htmlFor="jobTelephone">Télefono del trabajo:</label>
+                    <input value={newParent.jobTelephone} onChange={handleChange} type="text" name='jobTelephone'/>
 
-                    <label htmlFor="contact-phone">Celular:</label>
-                    <input value={newParent.contactCellPhone} onChange={onChange} type="number" name='contact-phone'/>
+                    <label htmlFor="contactCellphone">Celular:</label>
+                    <input value={newParent.contactCellphone} onChange={handleChange} type="text" name='contactCellphone'/>
 
                     <label htmlFor="email">Email:</label>
-                    <input value={newParent.email} onChange={onChange} type="email" />
-                    <button type='submit'>Enviar</button>
+                    <input value={newParent.email} onChange={handleChange} type="email" name='email'/>
                 </div>
+                <button type='submit' className={style.submit_button}>Enviar</button>
             </form>
         </div>
     </>);
