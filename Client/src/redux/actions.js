@@ -1,59 +1,91 @@
+import axios from 'axios';
 import {
-  GET_ALL_USERS,
-  GET_USER,
-  UPDATE_USER,
-  DELETE_USER,
-} from "./action-types";
-import axios from "axios";
+  CREATE_STUDENT,
+  GET_ALL_STUDENTS,
+  GET_STUDENT_BY_ID,
+  UPDATE_STUDENT_BY_ID,
+  DELETE_STUDENT_BY_ID,
+  GET_STUDENT_BY_NAME,
+  CLEAR_STUDENT_DETAIL,
+  BY_GRADE,
+  BY_PARENT,
+  BY_TEACHER,
+  BY_SUBJECT,
+} from './action-types';
 
-const URL = "http://localhost:3000";
+// Acción para crear un nuevo estudiante
+export const createStudent = (studentData) => async (dispatch) => {
+  try {
+    const response = await axios.post('/estudiantes', studentData);
+    const newStudent = response.data;
+    dispatch({
+      type: CREATE_STUDENT,
+      payload: newStudent,
+    });
+  } catch (error) {
+    console.error('Error creating student:', error);
+  }
+};
 
-export const createUser = (data) => {
-  const endpoint = "/user";
+// Acción para obtener la lista de estudiantes
+export const getAllStudents = () => async (dispatch) => {
+  try {
+    const response = await axios.get('/estudiantes');
+    const students = response.data;
+    dispatch({
+      type: GET_ALL_STUDENTS,
+      payload: students,
+    });
+  } catch (error) {
+    console.error('Error fetching students:', error);
+  }
+};
 
-  return async () => {
-    try {
-      const response = await axios.post(URL + endpoint, data);
-      console.log(response);
-      return response;
-    } catch (error) {
-      return error.message;
-    }
+// Acción para obtener un estudiante por su ID
+export const getStudentById = (id) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/estudiantes/${id}`);
+    const student = response.data;
+    dispatch({
+      type: GET_STUDENT_BY_ID,
+      payload: student,
+    });
+  } catch (error) {
+    console.error('Error fetching student by ID:', error);
+  }
+};
+
+// Otras acciones para actualizar, eliminar, buscar por nombre, limpiar detalles y filtros...
+
+
+// Acción para filtrar por grado
+export const filterByGrade = (grade) => {
+  return {
+    type: BY_GRADE,
+    payload: grade,
   };
 };
 
-export const getAllUsers = () => {
-  const endpoint = "/user";
-
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get(URL + endpoint);
-
-      if (!data.length) throw Error("No hay usuarios");
-      else {
-        console.log(data);
-        return dispatch({
-          type: GET_ALL_USERS,
-          payload: data,
-        });
-      }
-    } catch (error) {
-      return error.message;
-    }
+// Acción para filtrar por padre
+export const filterByParent = (parentId) => {
+  return {
+    type: BY_PARENT,
+    payload: parentId,
   };
 };
 
-export const getUser = (id) => {
-  return async (dispatch) => {
-    try {
-      const { data } = await axios.get(`${URL}/${id}`);
+// Acción para filtrar por profesor
+export const filterByTeacher = (teacherId) => {
+  return {
+    type: BY_TEACHER,
+    payload: teacherId,
+  };
+};
 
-      return dispatch({
-        type: GET_USER,
-        payload: data,
-      });
-    } catch (error) {
-      return error.message;
-    }
+// Acción para filtrar por asignatura
+export const filterBySubject = (subject) => {
+  return {
+    type: BY_SUBJECT,
+    payload: subject,
   };
 };
