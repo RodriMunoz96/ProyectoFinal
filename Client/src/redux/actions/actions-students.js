@@ -1,4 +1,9 @@
-import { GET_ALL_STUDENTS } from "../action-types";
+import {
+  GET_ALL_STUDENTS,
+  GET_STUDENT,
+  UPDATE_STUDENT,
+  DELETE_STUDENT,
+} from "../action-types";
 import axios from "axios";
 
 const URL = "http://localhost:3000/estudiantes";
