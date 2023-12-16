@@ -3,6 +3,7 @@ import {
   GET_USER,
   UPDATE_USER,
   DELETE_USER,
+  SET_USER_ACTIVE,
   GET_STUDENT,
   GET_ALL_STUDENTS,
   UPDATE_STUDENT,
@@ -15,6 +16,7 @@ import {
 
 // Define el estado inicial del almacenamiento Redux para estudiantes
 const initialState = {
+  loggedUser: {},
   allUsers: [],
   user: {},
   allStudents: [],
@@ -48,6 +50,12 @@ const rootReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         allUsers: state.allUsers.filter((user) => user.id !== payload),
+      };
+
+    case SET_USER_ACTIVE:
+      return {
+        ...state,
+        loggedUser: { id: payload },
       };
 
     case GET_STUDENT:
