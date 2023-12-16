@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { useState } from "react";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { createUser } from "../redux/actions/actions-user";
 
 const AddUserForm = () => {
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-    type: 'Parents',
-    nombre: '',
-    apellidoPaterno: '',
-    apellidoMaterno: '',
+    username: "",
+    email: "",
+    password: "",
+    type: "Parents",
+    nombre: "",
+    apellidoPaterno: "",
+    apellidoMaterno: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
     setUser({ ...user, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    try {
-      const response = await axios.post('http://localhost:5000/user', user);
-      console.log('Respuesta del servidor:', response.data);
-      // Puedes manejar la respuesta según tus necesidades
-    } catch (error) {
-      console.error('Error al enviar el formulario:', error);
-      // Puedes manejar el error según tus necesidades
-    }
+    dispatch(createUser(user));
+    alert("El usuario ha sido creado con éxito")
   };
 
   return (
@@ -73,7 +71,12 @@ const AddUserForm = () => {
 
             <Form.Group controlId="formType">
               <Form.Label>User Type</Form.Label>
-              <Form.Control as="select" name="type" value={user.type} onChange={handleChange}>
+              <Form.Control
+                as="select"
+                name="type"
+                value={user.type}
+                onChange={handleChange}
+              >
                 <option value="Parents">Parents</option>
                 <option value="Admin">Admin</option>
                 <option value="SuperAdmin">SuperAdmin</option>

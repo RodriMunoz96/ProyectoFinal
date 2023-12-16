@@ -3,6 +3,7 @@ import {
   GET_USER,
   UPDATE_USER,
   DELETE_USER,
+  SET_USER_ACTIVE,
 } from "../action-types";
 import axios from "axios";
 
@@ -76,5 +77,12 @@ export const deleteUser = (id) => {
     } catch (error) {
       return error.message;
     }
+  };
+};
+
+export const setUserActive = (userId) => {
+  return {
+    type: SET_USER_ACTIVE,
+    payload: userId,
   };
 };
