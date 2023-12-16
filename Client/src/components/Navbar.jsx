@@ -1,7 +1,7 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 function Navbar1() {
   return (
@@ -11,24 +11,27 @@ function Navbar1() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
+            {/* <Nav.Link href="#home">Home</Nav.Link> */}
             <NavDropdown title="El Colegio" id="basic-nav-dropdown">
-              <NavDropdown.Item href="../pages/QuienesSomos.jsx">Quiénes somos </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-              Nuestra Oferta Educativa
+              <NavDropdown.Item href="QuienesSomos">
+                Quiénes somos{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Proyecto Educativo </NavDropdown.Item>
+              <NavDropdown.Item href="oferta">
+                Nuestra Oferta Educativa
+              </NavDropdown.Item>
+              <NavDropdown.Item href="porqueelegir">
+                ¿Por qué elegirnos?{" "}
+              </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item href="nuestroequipo">
                 Nuestro Equipo
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Registrate" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Usuario</NavDropdown.Item>
+              <NavDropdown.Item href="addUser">Usuario</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
-               Administrador
+                Administrador
               </NavDropdown.Item>
-              
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
