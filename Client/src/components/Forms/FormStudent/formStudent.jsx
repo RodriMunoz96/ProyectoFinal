@@ -57,115 +57,126 @@ const FormStudent = () => {
   };
 
   return (
-    <>
-      <div className={style.container_form}>
-        <form onSubmit={onSubmit} className={style.form}>
-          <nav className={style.navbar}>
-            <h1>Información general del estudiante</h1>
-          </nav>
-          <div className={style.container_label_inputs}>
-            <label htmlFor="idDocumento">Documento de identidad:</label>
-            <input
-              value={newStudent.idDocumento}
-              onChange={handleChange}
-              type="text"
-              name="idDocumento"
-            />
+    <div className={style.container_form}>
+      <form onSubmit={onSubmit} className={style.form}>
+        <nav className={style.navbar}>
+          <h1>Información general del estudiante</h1>
+        </nav>
+        <div className={style.container_label_inputs}>
+          <label htmlFor="idDocumento">Documento de identidad:</label>
+          <input
+            value={newStudent.idDocumento}
+            onChange={handleChange}
+            type="text"
+            name="idDocumento"
+          />
 
-            <label htmlFor="nombres">Nombres:</label>
-            <input
-              value={newStudent.nombres}
-              onChange={handleChange}
-              type="text"
-              name="nombres"
-            />
+          <label htmlFor="nombres">Nombres:</label>
+          <input
+            value={newStudent.nombres}
+            onChange={handleChange}
+            type="text"
+            name="nombres"
+          />
 
-            <label htmlFor="apellidoPat">Apellido paterno:</label>
-            <input
-              value={newStudent.apellidoPat}
-              onChange={handleChange}
-              type="text"
-              name="apellidoPat"
-            />
+          <label htmlFor="apellidoPat">Apellido paterno:</label>
+          <input
+            value={newStudent.apellidoPat}
+            onChange={handleChange}
+            type="text"
+            name="apellidoPat"
+          />
 
-            <label htmlFor="apellidoMat">Apellido paterno:</label>
-            <input
-              value={newStudent.apellidoMat}
-              onChange={handleChange}
-              type="text"
-              name="apellidoMat"
-            />
+          <label htmlFor="apellidoMat">Apellido paterno:</label>
+          <input
+            value={newStudent.apellidoMat}
+            onChange={handleChange}
+            type="text"
+            name="apellidoMat"
+          />
 
-            <label htmlFor="educationLevel">Nivel educacional:</label>
-            <input
-              value={newStudent.educationLevel}
-              onChange={handleChange}
-              type="text"
-              name="educationLevel"
-            />
+          <label htmlFor="nacionalidad">Nacionalidad:</label>
+          <input
+            value={newStudent.nacionalidad}
+            onChange={handleChange}
+            type="text"
+            name="nacionalidad"
+          />
 
-            <label htmlFor="profession">Profesión:</label>
-            <input
-              value={newStudent.profession}
-              onChange={handleChange}
-              type="text"
-              name="profession"
-            />
+          <label htmlFor="fechNac">Fecha de nacimiento:</label>
+          <input
+            value={newStudent.fechNac}
+            onChange={handleChange}
+            type="date"
+            name="fechNac"
+          />
 
-            <label htmlFor="address">Dirección del Hogar:</label>
-            <input
-              value={newStudent.address}
-              onChange={handleChange}
-              type="text"
-              name="address"
-            />
+          <label htmlFor="sexo">Sexo:</label>
+          <select name="sexo" value={newStudent.sexo} onChange={handleChange}>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="undef">Prefiero no decirlo</option>
+          </select>
 
-            <label htmlFor="jobAddress">Dirección del Trabajo: </label>
-            <input
-              value={newStudent.jobAddress}
-              onChange={handleChange}
-              type="text"
-              name="jobAddress"
-            />
+          <label htmlFor="peso">Peso: </label>
+          <input
+            value={newStudent.peso}
+            onChange={handleChange}
+            type="number"
+            name="peso"
+          />
+          <label htmlFor="estatura">Estatura: </label>
+          <input
+            value={newStudent.estatura}
+            onChange={handleChange}
+            type="number"
+            name="estatura"
+          />
+          <label htmlFor="alergias">Alergias:</label>
+          <input
+            value={newStudent.alergias}
+            onChange={handleChange}
+            type="text"
+            name="alergias"
+          />
 
-            <label htmlFor="telephone">Télefono del hogar:</label>
-            <input
-              value={newStudent.telephone}
-              onChange={handleChange}
-              type="text"
-              name="telephone"
-            />
+          <label htmlFor="grupoSanguineo">Grupo sanguineo:</label>
+          <input
+            value={newStudent.grupoSanguineo}
+            onChange={handleChange}
+            type="text"
+            name="grupoSanguineo"
+          />
 
-            <label htmlFor="jobTelephone">Télefono del trabajo:</label>
-            <input
-              value={newStudent.jobTelephone}
-              onChange={handleChange}
-              type="text"
-              name="jobTelephone"
-            />
+          <label htmlFor="contactoEmerg">Contacto de emergencia:</label>
+          <input
+            value={newStudent.contactoEmerg}
+            onChange={handleChange}
+            type="number"
+            name="contactoEmerg"
+          />
 
-            <label htmlFor="contactCellphone">Celular:</label>
-            <input
-              value={newStudent.contactCellphone}
-              onChange={handleChange}
-              type="text"
-              name="contactCellphone"
-            />
+          <label htmlFor="fotoPerfil">Foto de perfil:</label>
+          <input
+            value={newStudent.fotoPerfil}
+            onChange={handleChange}
+            type="number"
+            name="fotoPerfil"
+          />
 
-            <label htmlFor="email">Email:</label>
-            <input
-              value={newStudent.email}
-              onChange={handleChange}
-              type="email"
-              name="email"
-            />
-          </div>
-          <button type="submit" className={style.submit_button}>
-            Enviar
-          </button>
-        </form>
-      </div>
-    </>
+          <label htmlFor="contactoEmerg">Contacto de emergencia:</label>
+          <input
+            value={newStudent.contactoEmerg}
+            onChange={handleChange}
+            type="number"
+            name="contactoEmerg"
+          />
+        </div>
+        <button type="submit" className={style.submit_button}>
+          Enviar
+        </button>
+      </form>
+    </div>
   );
 };
 
