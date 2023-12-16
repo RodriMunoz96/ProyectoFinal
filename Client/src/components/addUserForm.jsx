@@ -25,7 +25,7 @@ const AddUserForm = () => {
     event.preventDefault();
 
     dispatch(createUser(user));
-    alert("El usuario ha sido creado con éxito")
+    alert("El usuario ha sido creado con éxito");
   };
 
   return (

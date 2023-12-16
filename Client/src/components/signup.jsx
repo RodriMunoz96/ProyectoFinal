@@ -1,9 +1,11 @@
-import React from "react";
 import { Form, Button, Container } from "react-bootstrap";
 
 function SignUp() {
   return (
-    <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }}>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
       <Form className="p-4 border rounded">
         <h3 className="text-center mb-4">Sign Up</h3>
 
