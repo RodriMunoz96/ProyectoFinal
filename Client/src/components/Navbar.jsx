@@ -27,8 +27,8 @@ function Navbar1() {
                 Nuestro Equipo
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Registrate" id="basic-nav-dropdown">
-              <NavDropdown.Item href="addUser">Usuario</NavDropdown.Item>
+            <NavDropdown title="Ingresar" id="basic-nav-dropdown">
+              <NavDropdown.Item href="login">Usuario</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Administrador
               </NavDropdown.Item>
