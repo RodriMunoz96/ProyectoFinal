@@ -1,4 +1,5 @@
 import { Form, Button, Container } from "react-bootstrap";
+// Este componente está en desuso; su función (registrar un usuario) la cumple el componente "addUserForm"
 
 function SignUp() {
   return (
