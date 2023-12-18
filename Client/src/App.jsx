@@ -1,6 +1,6 @@
 import Navbar1 from "./components/Navbar";
 import HomePage from "./peges/HomePage";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import Login from "./components/login";
 import FormParent from "./components/Forms/FormParent/FormParent";
@@ -11,10 +11,17 @@ import NotFound from "./peges/NotFound";
 import NuestroEquipo from "./peges/NuestroEquipo";
 import AddUserForm from "./components/AddUserForm";
 import Contacto from "./peges/Contacto";
+
+
 function App() {
+  const location = useLocation()
+
   return (
     <>
-      <Navbar1 />
+      {
+        (location.pathname !== '/formParent') ? <Navbar1 /> : null
+      }
+      {/* <Navbar1 /> */}
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/login" element={<Login />} />
@@ -28,7 +35,10 @@ function App() {
 
         <Route exact path="/*" element={<NotFound />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
+      {
+        (location.pathname !== '/formParent') ? <Footer /> : null
+      }
     </>
   );
 }

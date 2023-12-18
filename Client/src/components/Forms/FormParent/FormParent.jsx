@@ -3,10 +3,14 @@ import { useDispatch } from 'react-redux';
 import style from './formParent.module.css'
 import { createParent } from '../../../redux/actions/actions-parents.js';
 import { validation } from './validation.js';
+import { NavLink } from 'react-router-dom';
 
 const FormParent = () => {
     const dispatch = useDispatch()
+    const arrow = '<---'
     const [ errors, setErrors ] = useState({})
+    const [ loading, setLoading ] = useState(false)
+    const [ image, setImage ] = useState(null)
     const [ newParent, setNewParent ] = useState({
         idDoc: "", //image
         name: "",
@@ -37,6 +41,36 @@ const FormParent = () => {
         console.log(errors);
     }
 
+    const uploadImage = async (e) => {
+        const files = e.target.files
+        const data = new FormData()
+        
+        data.append("file", files[0])
+        data.append("upload_preset", "nmxly1pm")
+
+        
+        const res = await fetch(
+            `https://api.cloudinary.com/v1_1/dxi3fh6kr/image/upload`,
+            {
+                method: "POST",
+                body: data,
+            }
+        )
+
+            
+        const file = await res.json()
+        setImage(file.secure_url)
+        setErrors(validation({
+            ...newParent,
+            idDoc: file.secure_url,
+        }))
+        setLoading(true)
+        setNewParent({
+            ...newParent,
+            idDoc: file.secure_url,
+        })
+    }
+
     const onSubmit = (e) => {
         e.preventDefault()
 
@@ -45,7 +79,7 @@ const FormParent = () => {
 
         setErrors({})
         setNewParent({
-            idDoc: "", //image
+            idDoc: "",
             name: "",
             lastName: "",
             educationLevel: "",
@@ -63,6 +97,7 @@ const FormParent = () => {
 
     return (<>
         <div className={style.container_form}>
+            <NavLink to={'/'} className={style.button_back_home}> {arrow} Volver a la página principal</NavLink>
             <form onSubmit={onSubmit} className={style.form}>
                 <nav className={style.navbar}>
                     <h1>Información general del Apoderado</h1>
@@ -70,7 +105,26 @@ const FormParent = () => {
                 <div className={style.container_label_inputs}>
                     <div className={style.first_container}>
                         <div className={style.first_first_container}>
-                            <div className={style.container_image}>+</div>
+                            <div className={style.container_image}>
+                                {
+                                    loading && image ?  <>
+                                        <img src={image} alt="Imagen del Apoderado" className={style.image_parent}/>
+                                        <label htmlFor="imageOutput" className={style.label_image_done}>+</label>
+                                        <input type="file" id="imageOutput" name="idDoc" onChange={uploadImage}/>
+                                        <br/>
+                                        <p>
+                                            {errors.idDoc ? errors.idDoc : null}
+                                        </p>
+                                    </> : <>
+                                        <label htmlFor="imageInput" className={style.label_image_undone}>Sube una foto de tu DNI</label>
+                                        <input type="file" id="imageInput" name="idDoc" onChange={uploadImage}/>
+                                        <br/>
+                                        <p>
+                                            {errors.idDoc ? errors.idDoc : null}
+                                        </p>
+                                    </>
+                                }
+                            </div>
                         </div>
                         <div className={style.second_first_container}>
                             <div className={style.second_first_container_first_line}>
@@ -88,11 +142,11 @@ const FormParent = () => {
                                 </div>
                             </div>
                             <div className={style.second_first_container_second_line}>
-                                <div className={style.container_idDoc}>
-                                    <label htmlFor="idDoc">Documento de identidad:</label>
-                                    <input value={newParent.idDoc} onChange={handleChange} type="text" name='idDoc'/>
+                                <div className={style.container_contactCellphone}>
+                                    <label htmlFor="contactCellphone">Celular:</label>
+                                    <input value={newParent.contactCellphone} onChange={handleChange} type="text" name='contactCellphone'/>
                                     <br />
-                                    <p>{errors.idDoc ? errors.idDoc: null}</p>
+                                    <p>{errors.contactCellphone ? errors.contactCellphone: null}</p>
                                 </div>
                                 <div className={style.container_email}>
                                     <label htmlFor="email">Email:</label>
@@ -130,12 +184,6 @@ const FormParent = () => {
                                 <input value={newParent.jobTelephone} onChange={handleChange} type="text" name='jobTelephone'/>
                                 <br />
                                 <p>{errors.jobTelephone ? errors.jobTelephone: null}</p>
-                            </div>
-                            <div className={style.container_contactCellphone}>
-                                <label htmlFor="contactCellphone">Celular:</label>
-                                <input value={newParent.contactCellphone} onChange={handleChange} type="text" name='contactCellphone'/>
-                                <br />
-                                <p>{errors.contactCellphone ? errors.contactCellphone: null}</p>
                             </div>
                         </div>
                         <div className={style.second_second_container}>
