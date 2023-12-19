@@ -2,8 +2,10 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import style from "./formParent.module.css";
 import { createStudent } from "../../../redux/actions/actions-students";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 const FormStudent = () => {
+  const cld = new Cloudinary({ cloud: { cloudName: "dotfhd8de" } });
   const dispatch = useDispatch();
   const [newStudent, setNewStudent] = useState({
     idDocumento: "",
