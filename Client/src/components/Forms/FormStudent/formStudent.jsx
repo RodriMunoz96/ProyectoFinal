@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import style from "./formParent.module.css";
+import style from "./formStudent.module.css";
 import { createStudent } from "../../../redux/actions/actions-students";
-import { Cloudinary } from "@cloudinary/url-gen";
+import validation from "../FormStudent/validation";
+//import { Cloudinary } from "@cloudinary/url-gen";
 
 const FormStudent = () => {
-  const cld = new Cloudinary({ cloud: { cloudName: "dotfhd8de" } });
+  const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState(null);
+  const [errors, setErrors] = useState(null);
+  //const cld = new Cloudinary({ cloud: { cloudName: "dotfhd8de" } });
   const dispatch = useDispatch();
+
   const [newStudent, setNewStudent] = useState({
     idDocumento: "",
     nombres: "",
@@ -58,6 +63,32 @@ const FormStudent = () => {
     });
   };
 
+  const uploadImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "nmxly1pm");
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/dotfhd8de/image/upload`,
+      {
+        method: "POST",
+        body: data,
+      }
+    );
+    const file = await res.json();
+    setImage(file.secure_url);
+    setErrors(
+      validation({
+        ...newStudent,
+        idDoc: file.secure_url,
+      })
+    );
+    setLoading(true);
+    setNewStudent({
+      ...newStudent,
+      idDoc: file.secure_url,
+    });
+  };
   return (
     <div className={style.container_form}>
       <form onSubmit={onSubmit} className={style.form}>
@@ -66,6 +97,26 @@ const FormStudent = () => {
         </nav>
         <div className={style.container_label_inputs}>
           <label htmlFor="idDocumento">Documento de identidad:</label>
+          {loading && image && (
+            <>
+              <img
+                src={image}
+                alt="Imagen del estudiante"
+                className={style.image_student}
+              />
+              <label htmlFor="imageOutput" className={style.label_image_done}>
+                +
+              </label>
+              <input
+                type="file"
+                id="imageOutput"
+                name="idDoc"
+                onChange={uploadImage}
+              />
+              <br />
+              <p>{errors.idDoc ? errors.idDoc : null}</p>
+            </>
+          )}
           <input
             value={newStudent.idDocumento}
             onChange={handleChange}
