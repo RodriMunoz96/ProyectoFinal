@@ -8,7 +8,6 @@ const AddUserForm = () => {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState({
-    username: "",
     email: "",
     password: "",
     type: "Parents",
@@ -18,7 +17,6 @@ const AddUserForm = () => {
   });
 
   const [error, setError] = useState({
-    username: "",
     email: "",
     password: "",
     nombre: "",
