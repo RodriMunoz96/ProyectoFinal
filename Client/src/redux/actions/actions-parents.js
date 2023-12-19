@@ -6,7 +6,7 @@ import {
   DELETE_PARENT,
 } from "../action-types";
 
-const URL = "http://localhost:3001/parents";
+const URL = "http://localhost:3000/parents";
 
 export const createParent = (data) => {
   return async () => {
