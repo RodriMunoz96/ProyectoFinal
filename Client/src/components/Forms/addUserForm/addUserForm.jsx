@@ -17,6 +17,15 @@ const AddUserForm = () => {
     apellidoMaterno: "",
   });
 
+  const [error, setError] = useState({
+    username: "",
+    email: "",
+    password: "",
+    nombre: "",
+    apellidoPaterno: "",
+    apellidoMaterno: "",
+  });
+
   const validateForm = () => {
     const errors = validate(user);
 
@@ -29,7 +38,17 @@ const AddUserForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setUser({ ...user, [name]: value });
+
+    setUser({
+      ...user,
+      [name]: value,
+    });
+    setError(
+      validate({
+        ...user,
+        [name]: value,
+      })
+    );
   };
 
   const handleSubmit = async (event) => {
@@ -54,6 +73,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.username && (
+                <span style={{ color: "red" }}>{error.username}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formEmail">
@@ -66,6 +88,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.email && (
+                <span style={{ color: "red" }}>{error.email}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formPassword">
@@ -78,6 +103,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.password && (
+                <span style={{ color: "red" }}>{error.password}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formType">
@@ -104,6 +132,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.nombre && (
+                <span style={{ color: "red" }}>{error.nombre}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formApellidoPaterno">
@@ -116,6 +147,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.apellidoPaterno && (
+                <span style={{ color: "red" }}>{error.apellidoPaterno}</span>
+              )}
             </Form.Group>
 
             <Form.Group controlId="formApellidoMaterno">
@@ -128,6 +162,9 @@ const AddUserForm = () => {
                 onChange={handleChange}
                 required
               />
+              {error.apellidoMaterno && (
+                <span style={{ color: "red" }}>{error.apellidoMaterno}</span>
+              )}
             </Form.Group>
 
             <Button variant="primary" type="submit" disabled={validateForm()}>
