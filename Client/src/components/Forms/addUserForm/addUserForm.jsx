@@ -63,26 +63,11 @@ const AddUserForm = () => {
       <Row className="justify-content-md-center mt-5">
         <Col md={6}>
           <Form onSubmit={handleSubmit}>
-            <Form.Group controlId="formUsername">
-              <Form.Label>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                name="username"
-                value={user.username}
-                onChange={handleChange}
-                required
-              />
-              {error.username && (
-                <span style={{ color: "red" }}>{error.username}</span>
-              )}
-            </Form.Group>
-
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
               <Form.Control
                 type="email"
-                placeholder="Enter email"
+                placeholder="Ingrese su email"
                 name="email"
                 value={user.email}
                 onChange={handleChange}
@@ -94,10 +79,10 @@ const AddUserForm = () => {
             </Form.Group>
 
             <Form.Group controlId="formPassword">
-              <Form.Label>Password</Form.Label>
+              <Form.Label>Contraseña</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Enter password"
+                placeholder="Ingrese su contraseña"
                 name="password"
                 value={user.password}
                 onChange={handleChange}
@@ -108,25 +93,11 @@ const AddUserForm = () => {
               )}
             </Form.Group>
 
-            <Form.Group controlId="formType">
-              <Form.Label>User Type</Form.Label>
-              <Form.Control
-                as="select"
-                name="type"
-                value={user.type}
-                onChange={handleChange}
-              >
-                <option value="Parents">Parents</option>
-                <option value="Admin">Admin</option>
-                <option value="SuperAdmin">SuperAdmin</option>
-              </Form.Control>
-            </Form.Group>
-
             <Form.Group controlId="formNombre">
               <Form.Label>Nombre</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter nombre"
+                placeholder="Ingrese su nombre"
                 name="nombre"
                 value={user.nombre}
                 onChange={handleChange}
@@ -141,7 +112,7 @@ const AddUserForm = () => {
               <Form.Label>Apellido Paterno</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter apellido paterno"
+                placeholder="Ingrese su apellido paterno"
                 name="apellidoPaterno"
                 value={user.apellidoPaterno}
                 onChange={handleChange}
@@ -156,7 +127,7 @@ const AddUserForm = () => {
               <Form.Label>Apellido Materno</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter apellido materno"
+                placeholder="Ingrese su apellido materno"
                 name="apellidoMaterno"
                 value={user.apellidoMaterno}
                 onChange={handleChange}
