@@ -1,8 +1,7 @@
 import { Form, Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function Login() {
-
-
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
@@ -36,9 +35,9 @@ function Login() {
         </p>
         <p className="forgot-password text-right mt-3">No está registrado?</p>
         <div className="d-grid">
-          <Button variant="primary" type="submit">
+          <Link to="/addUser" className="btn btn-primary">
             Registrarse
-          </Button>
+          </Link>
         </div>
       </Form>
     </Container>
