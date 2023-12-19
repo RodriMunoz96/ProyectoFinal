@@ -33,6 +33,7 @@ function Navbar1() {
                 Administrador
               </NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="addUser">Registrarse</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
