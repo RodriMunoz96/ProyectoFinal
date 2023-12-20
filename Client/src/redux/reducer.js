@@ -14,7 +14,6 @@ import {
   DELETE_PARENT,
 } from "./action-types";
 
-// Define el estado inicial del almacenamiento Redux para estudiantes
 const initialState = {
   loggedUser: {},
   allUsers: [],
@@ -25,7 +24,6 @@ const initialState = {
   parent: {},
 };
 
-// Define el reducer que gestionará las acciones y actualizará el estado
 const rootReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case GET_ALL_USERS:

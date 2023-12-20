@@ -68,7 +68,7 @@
     position: relative;
     width: 250px;
     height: 300px;
-    background-color: rgba(128, 128, 128, 0.341);
+    background-color: rgba(218, 212, 212, 0.293);
     border: 1px solid gray;
     display: flex;
     justify-content: center;
@@ -100,9 +100,11 @@
     cursor: pointer;
 }
 .label_image_undone{
-    background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 2px 5px;
+    background-color: rgba(212, 210, 210, 0.371);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 2px 8px;
+    color: black;
+    font-weight: bold;
     border-radius: 3px;
     text-align: center;
     cursor: pointer;

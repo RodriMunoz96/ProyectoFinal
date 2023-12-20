@@ -25,13 +25,15 @@ const validate = (input) => {
   if (regexNumberSimbols.test(input.nombre))
     errors.nombre = "No puede contener números o símbolos";
 
-  if (!input.apellidoPaterno) errors.apellidoPaterno = "Escriba un nombre";
+  if (!input.apellidoPaterno)
+    errors.apellidoPaterno = "Escriba un apellido paterno";
   if (input.apellidoPaterno.length > 20)
     errors.apellidoPaterno = "Deben ser menos de 20 caracteres";
   if (regexNumberSimbols.test(input.apellidoPaterno))
     errors.apellidoPaterno = "No puede contener números o símbolos";
 
-  if (!input.apellidoMaterno) errors.apellidoMaterno = "Escriba un nombre";
+  if (!input.apellidoMaterno)
+    errors.apellidoMaterno = "Escriba un apellido materno";
   if (input.apellidoMaterno.length > 20)
     errors.apellidoMaterno = "Deben ser menos de 20 caracteres";
   if (regexNumberSimbols.test(input.apellidoMaterno))

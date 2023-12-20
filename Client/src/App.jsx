@@ -12,15 +12,12 @@ import NuestroEquipo from "./peges/NuestroEquipo";
 import AddUserForm from "./components/Forms/addUserForm/addUserForm";
 import Contacto from "./peges/Contacto";
 
-
 function App() {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <>
-      {
-        (location.pathname !== '/formParent') ? <Navbar1 /> : null
-      }
+      {location.pathname !== "/formParent" ? <Navbar1 /> : null}
       {/* <Navbar1 /> */}
       <Routes>
         <Route exact path="/" element={<HomePage />} />
@@ -36,9 +33,7 @@ function App() {
         <Route exact path="/*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}
-      {
-        (location.pathname !== '/formParent') ? <Footer /> : null
-      }
+      {location.pathname !== "/formParent" ? <Footer /> : null}
     </>
   );
 }
