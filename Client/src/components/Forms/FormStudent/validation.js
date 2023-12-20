@@ -142,6 +142,61 @@ const validation = (newStudent, errors, setErrors, event) => {
       }
       break;
 
+    case "alergias":
+      if (
+        !newStudent.alergias ||
+        newStudent.alergias.length < 3 ||
+        newStudent.alergias.length > 100
+      ) {
+        setErrors({
+          ...errors,
+          alergias:
+            "Las alergias no son válidas. Debe contener máximo 100 carácteres y mínimo 3",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          alergias: "",
+        });
+      }
+      break;
+
+    case "grupoSanguineo":
+      if (!newStudent.grupoSanguineo || newStudent.grupoSanguineo.length > 3) {
+        setErrors({
+          ...errors,
+          grupoSanguineo:
+            "El grupo sanguineo no son válido. Debe contener máximo 3 carácteres.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          grupoSanguineo: "",
+        });
+      }
+      break;
+
+    case "contactoEmerg":
+      if (
+        !newStudent.contactoEmerg ||
+        !numberRegex.test(newStudent.contactoEmerg) ||
+        !newStudent.contactoEmerg < 0 ||
+        newStudent.contactoEmerg.toString().length < 7 ||
+        newStudent.contactoEmerg.toString().length > 15
+      ) {
+        setErrors({
+          ...errors,
+          contactoEmerg:
+            "El número del contacto de emergencia no es válido, debe estar entre 7 y 15 digitos, no puede ser negativo y debe escribirse sin puntos ni comas.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          contactoEmerg: "",
+        });
+      }
+      break;
+
     default:
       setErrors({
         ...errors,
