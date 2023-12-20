@@ -12,8 +12,8 @@ const FormParent = () => {
     const [ loading, setLoading ] = useState(false)
     const [ image, setImage ] = useState(null)
     const [ newParent, setNewParent ] = useState({
-        fotoDocumento: "",
-        idDoc: "", //image
+        fotoDocumento: "", //image
+        idDoc: "", 
         name: "",
         lastName: "",
         educationLevel: "",
@@ -75,7 +75,7 @@ const FormParent = () => {
 
         setErrors({});
         setNewParent({
-            fotoDocumento: "",
+            fotoDocumento: "", //image
             idDoc: "",
             name: "",
             lastName: "",
