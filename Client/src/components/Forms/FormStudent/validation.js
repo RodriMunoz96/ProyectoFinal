@@ -1,66 +1,147 @@
-const validation = (activityData, errors, setErrors, event) => {
+const textRegex = /^[a-zA-Z\s]+$/;
+const numberRegex = /^[0-9]+$/;
+
+const validation = (newStudent, errors, setErrors, event) => {
   switch (event.target.name) {
-    case "name":
+    case "nombres":
       if (
-        !activityData.name ||
-        activityData.name.length < 3 ||
-        activityData.name.length > 25
+        !textRegex.test(newStudent.nombres) ||
+        !newStudent.nombres ||
+        newStudent.nombres.length < 3 ||
+        newStudent.nombres.length > 25
       ) {
         setErrors({
           ...errors,
-          name: "El nombre no es valido. Debe contener máximo 25 carácteres y mínimo 3",
+          nombres:
+            "El nombre no es valido. Debe contener solo letras, máximo 25 carácteres y mínimo 3",
         });
       } else {
         setErrors({
           ...errors,
-          name: "",
+          nombres: "",
         });
       }
       break;
-    case "dificult":
+    case "apellidoPat":
       if (
-        !activityData.dificult ||
-        activityData.dificult < 1 ||
-        activityData.dificult > 5
+        !textRegex.test(newStudent.apellidoPat) ||
+        !newStudent.apellidoPat ||
+        newStudent.apellidoPat.length < 3 ||
+        newStudent.apellidoPat.length > 25
       ) {
         setErrors({
           ...errors,
-          dificult: "La dificultad de la actividad debe estar entre 1 y 5",
+          apellidoPat:
+            "El primer apellido no es válido. Debe contener solo letras con máximo 25 carácteres y mínimo 3",
         });
       } else {
         setErrors({
           ...errors,
-          dificult: "",
+          apellidoPat: "",
+        });
+      }
+      break;
+    case "apellidoMat":
+      if (
+        !textRegex.test(newStudent.apellidoMat) ||
+        !newStudent.apellidoMat ||
+        newStudent.apellidoMat.length < 3 ||
+        newStudent.apellidoMat.length > 25
+      ) {
+        setErrors({
+          ...errors,
+          apellidoMat:
+            "El segundo apellido no es válido. Debe contener máximo 25 carácteres y mínimo 3",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          apellidoMat: "",
+        });
+      }
+      break;
+    case "idDocumento":
+      if (
+        !newStudent.idDocumento ||
+        !numberRegex.test(newStudent.idDocumento) ||
+        !newStudent.idDocumento < 0 ||
+        newStudent.idDocumento.toString().length < 7 ||
+        newStudent.idDocumento.toString().length > 15
+      ) {
+        setErrors({
+          ...errors,
+          idDocumento:
+            "El número de documento no es válido, debe estar entre 7 y 15 digitos, no puede ser negativo y debe escribirse sin puntos ni comas.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          idDocumento: "",
         });
       }
       break;
 
-    case "duration":
-      if (activityData.duration > 49 || activityData.duration < 1) {
+    case "nacionalidad":
+      if (
+        !textRegex.test(newStudent.nacionalidad) ||
+        !newStudent.nacionalidad ||
+        newStudent.nacionalidad.length < 3 ||
+        newStudent.nacionalidad.length > 25
+      ) {
         setErrors({
           ...errors,
-          duration: "la duración debe estar entre 1 y 48 horas",
+          nacionalidad:
+            "El nacionalidad no es válida. Debe contener solo letras, máximo 25 carácteres y mínimo 3",
         });
       } else {
         setErrors({
           ...errors,
-          duration: "",
+          nacionalidad: "",
         });
       }
       break;
-    case "season":
-      if (!activityData.season || activityData.season == "seleccionar") {
+
+    case "fechNac":
+      if (!newStudent.fechNac || new Date(newStudent.fechNac) > new Date()) {
         setErrors({
           ...errors,
-          season: "Por favor seleccione una temporada",
+          fechNac: "La fecha ingresada no puede ser del futuro",
         });
       } else {
         setErrors({
           ...errors,
-          season: "",
+          fechNac: "",
         });
       }
       break;
+    case "peso":
+      if (!newStudent.peso || !newStudent.peso < 0) {
+        setErrors({
+          ...errors,
+          peso: "El peso debe no puede ser un número negativo.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          peso: "",
+        });
+      }
+      break;
+
+    case "estatura":
+      if (!newStudent.estatura || !newStudent.estatura < 0) {
+        setErrors({
+          ...errors,
+          estatura: "La estatura no debe no puede ser un número negativo.",
+        });
+      } else {
+        setErrors({
+          ...errors,
+          estatura: "",
+        });
+      }
+      break;
+
     default:
       setErrors({
         ...errors,

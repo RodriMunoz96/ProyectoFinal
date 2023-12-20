@@ -8,7 +8,22 @@ import validation from "../FormStudent/validation";
 const FormStudent = () => {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(null);
-  const [errors, setErrors] = useState(null);
+  const [errors, setErrors] = useState({
+    idDocumento: "",
+    nombres: "",
+    apellidoPat: "",
+    apellidoMat: "",
+    Nacionalidad: "",
+    fechNac: "",
+    sexo: "",
+    peso: "",
+    estatura: "",
+    alergias: "",
+    grupoSanguineo: "",
+    contactoEmerg: "",
+    fotoPerfil: "",
+    fotoDocumento: "",
+  });
   //const cld = new Cloudinary({ cloud: { cloudName: "dotfhd8de" } });
   const dispatch = useDispatch();
 
@@ -30,12 +45,15 @@ const FormStudent = () => {
     state: true,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setNewStudent({
-      ...newStudent,
-      [name]: value,
+  const handleChange = (event) => {
+    setNewStudent((prevNewStudent) => {
+      const newNewStudent = {
+        ...prevNewStudent,
+        [event.target.name]: event.target.value,
+      };
+      validation(newNewStudent, errors, setErrors, event);
+      console.log(newStudent);
+      return newNewStudent;
     });
   };
 
@@ -96,7 +114,6 @@ const FormStudent = () => {
           <h1>Información general del estudiante</h1>
         </nav>
         <div className={style.container_label_inputs}>
-          <label htmlFor="idDocumento">Documento de identidad:</label>
           {loading && image && (
             <>
               <img
@@ -117,12 +134,18 @@ const FormStudent = () => {
               <p>{errors.idDoc ? errors.idDoc : null}</p>
             </>
           )}
+
+          <label htmlFor="idDocumento">
+            Número del documento de identidad:
+          </label>
+
           <input
             value={newStudent.idDocumento}
             onChange={handleChange}
-            type="text"
+            type="number"
             name="idDocumento"
           />
+          <p>{errors.idDocumento ? errors.idDocumento : null}</p>
 
           <label htmlFor="nombres">Nombres:</label>
           <input
@@ -131,22 +154,24 @@ const FormStudent = () => {
             type="text"
             name="nombres"
           />
-
-          <label htmlFor="apellidoPat">Apellido paterno:</label>
+          <p>{errors.nombres ? errors.nombres : null}</p>
+          <label htmlFor="apellidoPat">Primer apellido:</label>
           <input
             value={newStudent.apellidoPat}
             onChange={handleChange}
             type="text"
             name="apellidoPat"
           />
+          <p>{errors.apellidoPat ? errors.apellidoPat : null}</p>
 
-          <label htmlFor="apellidoMat">Apellido paterno:</label>
+          <label htmlFor="apellidoMat">Segundo apellido:</label>
           <input
             value={newStudent.apellidoMat}
             onChange={handleChange}
             type="text"
             name="apellidoMat"
           />
+          <p>{errors.apellidoMat ? errors.apellidoMat : null}</p>
 
           <label htmlFor="nacionalidad">Nacionalidad:</label>
           <input
@@ -155,6 +180,7 @@ const FormStudent = () => {
             type="text"
             name="nacionalidad"
           />
+          <p>{errors.nacionalidad ? errors.nacionalidad : null}</p>
 
           <label htmlFor="fechNac">Fecha de nacimiento:</label>
           <input
@@ -163,12 +189,12 @@ const FormStudent = () => {
             type="date"
             name="fechNac"
           />
+          <p>{errors.fechNac ? errors.fechNac : null}</p>
 
           <label htmlFor="sexo">Sexo:</label>
           <select name="sexo" value={newStudent.sexo} onChange={handleChange}>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="undef">Prefiero no decirlo</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
           </select>
 
           <label htmlFor="peso">Peso: </label>
@@ -178,6 +204,7 @@ const FormStudent = () => {
             type="number"
             name="peso"
           />
+          <p>{errors.peso ? errors.peso : null}</p>
           <label htmlFor="estatura">Estatura: </label>
           <input
             value={newStudent.estatura}
@@ -185,6 +212,8 @@ const FormStudent = () => {
             type="number"
             name="estatura"
           />
+          <p>{errors.estatura ? errors.estatura : null}</p>
+
           <label htmlFor="alergias">Alergias:</label>
           <input
             value={newStudent.alergias}
@@ -192,6 +221,7 @@ const FormStudent = () => {
             type="text"
             name="alergias"
           />
+          <p>{errors.alergias ? errors.alergias : null}</p>
 
           <label htmlFor="grupoSanguineo">Grupo sanguineo:</label>
           <input
@@ -200,6 +230,7 @@ const FormStudent = () => {
             type="text"
             name="grupoSanguineo"
           />
+          <p>{errors.grupoSanguineo ? errors.grupoSanguineo : null}</p>
 
           <label htmlFor="contactoEmerg">Contacto de emergencia:</label>
           <input
@@ -208,6 +239,7 @@ const FormStudent = () => {
             type="number"
             name="contactoEmerg"
           />
+          <p>{errors.contactoEmerg ? errors.contactoEmerg : null}</p>
 
           <label htmlFor="fotoPerfil">Foto de perfil:</label>
           <input
