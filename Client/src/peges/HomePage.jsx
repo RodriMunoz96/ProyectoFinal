@@ -6,6 +6,7 @@ import FormStudent from "../components/Forms/FormStudent/formStudent";
 const HomePage = () => {
   return (
     <>
+      <FormStudent />
       <Carrousel />
       <PorqueElegir />
       <QueTeOfrecemos />

@@ -7,7 +7,9 @@ import validation from "../FormStudent/validation";
 
 const FormStudent = () => {
   const [loading, setLoading] = useState(false);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState(
+    "https://res.cloudinary.com/dotfhd8de/image/upload/v1703046773/dataSchool/6f57760966a796644b8cfb0fbc449843_ctehip.png"
+  );
   const [errors, setErrors] = useState({
     idDocumento: "",
     nombres: "",
@@ -81,27 +83,23 @@ const FormStudent = () => {
     });
   };
 
-  const uploadImage = async (e) => {
-    const files = e.target.files;
+  const uploadImage = async (event) => {
+    const files = event.target.files;
     const data = new FormData();
     data.append("file", files[0]);
-    data.append("upload_preset", "nmxly1pm");
+    data.append("upload_preset", "dataSchool");
+    setLoading(true);
     const res = await fetch(
-      `https://api.cloudinary.com/v1_1/dotfhd8de/image/upload`,
+      `https://api.cloudinary.com/v1_1/dotfhd8de/dataSchool/upload`,
       {
         method: "POST",
         body: data,
       }
     );
     const file = await res.json();
+    console.log(res);
     setImage(file.secure_url);
-    setErrors(
-      validation({
-        ...newStudent,
-        idDoc: file.secure_url,
-      })
-    );
-    setLoading(true);
+    setLoading(false);
     setNewStudent({
       ...newStudent,
       idDoc: file.secure_url,
@@ -114,11 +112,11 @@ const FormStudent = () => {
           <h1>Información general del estudiante</h1>
         </nav>
         <div className={style.container_label_inputs}>
-          {loading && image && (
+          {
             <>
               <img
                 src={image}
-                alt="Imagen del estudiante"
+                alt="Foto del documento"
                 className={style.image_student}
               />
               <label htmlFor="imageOutput" className={style.label_image_done}>
@@ -133,7 +131,7 @@ const FormStudent = () => {
               <br />
               <p>{errors.idDoc ? errors.idDoc : null}</p>
             </>
-          )}
+          }
 
           <label htmlFor="idDocumento">
             Número del documento de identidad:
