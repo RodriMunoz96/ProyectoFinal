@@ -3,7 +3,7 @@ export const validation = (newParent) => {
 
     /* REGEX */
     // const idDocRegex = 1;
-    const nameRegex = /^[a-zA-Z0-9áéíóúüÁÉÍÓÚÜñÑäëïöüÄËÏÖÜ]+$/;
+    const nameRegex = /^[a-zA-ZáéíóúüÁÉÍÓÚÜñÑäëïöüÄËÏÖÜ]+$/;
     const educationLevelRegex = /^[a-zA-Z]+$/;
     const professionRegex = /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+(?:[ ]?[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+)*$/
     const addresesRegex = /^[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ0-9]+(?:[ ]?[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ0-9.]+)*$/;
@@ -13,12 +13,23 @@ export const validation = (newParent) => {
     const regexUrl = new RegExp(imageRegexUrl)
 
 
+    /* ID DOC PICTURE */
+    if(newParent.fotoDocumento && !newParent.fotoDocumento.match(regexUrl)){
+        error.fotoDocumento = "El URL de la imagen es invalido."
+    }
+    if(newParent.fotoDocumento.length === 0){
+        error.fotoDocumento = "Complete este campo con la foto de su DNI";
+    }
+
     /* ID DOC */
-    if(newParent.idDoc && !newParent.idDoc.match(regexUrl)){
-        error.idDoc = "El URL de la imagen es invalido."
+    if(!numberRegex.test(newParent.idDoc)){
+        error.idDoc = 'El DNI debe ser númerico.'
+    }
+    if(newParent.idDoc.length > 14 || newParent.idDoc.length < 8) {
+        error.idDoc = 'El DNI debe tener exactamente 8 o 14 carácteres.'
     }
     if(newParent.idDoc.length === 0){
-        error.idDoc = "Complete este campo con la foto de su DNI";
+        error.idDoc = "Debe completar con su número de DNI."
     }
 
     /* NAME */

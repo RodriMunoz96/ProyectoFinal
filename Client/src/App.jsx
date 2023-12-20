@@ -9,7 +9,7 @@ import QueTeOfrecemos from "./components/QueTeOfrecemos";
 import PorQueElegir from "./components/PorqueElegir";
 import NotFound from "./peges/NotFound";
 import NuestroEquipo from "./peges/NuestroEquipo";
-import AddUserForm from "./components/AddUserForm";
+import AddUserForm from "./components/Forms/addUserForm/addUserForm";
 import Contacto from "./peges/Contacto";
 
 

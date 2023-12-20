@@ -121,12 +121,12 @@
     flex-direction: row;
     width: 100%;
 }
-.container_educationLevel, .container_contactCellphone,
+.container_educationLevel, .container_idDoc,
 .container_profession,  .container_email,
 .container_name, .container_lastName {
     width: 50%;
 }
-.container_educationLevel input,  .container_contactCellphone input,
+.container_educationLevel input,  .container_idDoc input,
 .container_profession input,  .container_email input,
 .container_name input, .container_lastName input {
     width: 95%;
@@ -144,11 +144,11 @@
     display: flex;
     width: 100%;
 }
-.container_telephone, .container_jobTelephone {
+.container_telephone, .container_jobTelephone, .container_contactCellphone {
     width: 100%;
 }
-.container_telephone input, .container_jobTelephone input{
-    width: 95%;
+.container_telephone input, .container_jobTelephone input, .container_contactCellphone input{
+    width: 93.7%;
     border-radius: 3px;
     border: 1px solid black;
 }
@@ -162,7 +162,7 @@
 }
 .container_address input ,
 .container_jobAddress input {
-    width: 95%;
+    width: 95.7%;
     border-radius: 3px;
     border: 1px solid black;
 }

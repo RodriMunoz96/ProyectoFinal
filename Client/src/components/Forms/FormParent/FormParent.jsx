@@ -12,6 +12,7 @@ const FormParent = () => {
     const [ loading, setLoading ] = useState(false)
     const [ image, setImage ] = useState(null)
     const [ newParent, setNewParent ] = useState({
+        fotoDocumento: "",
         idDoc: "", //image
         name: "",
         lastName: "",
@@ -38,7 +39,6 @@ const FormParent = () => {
             ...newParent,
             [name]: value
         })
-        console.log(errors);
     }
 
     const uploadImage = async (e) => {
@@ -62,23 +62,24 @@ const FormParent = () => {
         setImage(file.secure_url)
         setErrors(validation({
             ...newParent,
-            idDoc: file.secure_url,
+            fotoDocumento: file.secure_url,
         }))
         setLoading(true)
         setNewParent({
             ...newParent,
-            idDoc: file.secure_url,
+            fotoDocumento: file.secure_url,
         })
     }
 
     const onSubmit = (e) => {
         e.preventDefault()
 
-        // dispatch(createParent({...newParent}))
-        console.log(newParent);
+        dispatch(createParent({...newParent}))
+        // console.log(newParent);
 
         setErrors({})
         setNewParent({
+            fotoDocumento: "",
             idDoc: "",
             name: "",
             lastName: "",
@@ -110,17 +111,17 @@ const FormParent = () => {
                                     loading && image ?  <>
                                         <img src={image} alt="Imagen del Apoderado" className={style.image_parent}/>
                                         <label htmlFor="imageOutput" className={style.label_image_done}>+</label>
-                                        <input type="file" id="imageOutput" name="idDoc" onChange={uploadImage}/>
+                                        <input type="file" id="imageOutput" name="fotoDocumento" onChange={uploadImage}/>
                                         <br/>
                                         <p>
-                                            {errors.idDoc ? errors.idDoc : null}
+                                            {errors.fotoDocumento ? errors.fotoDocumento : null}
                                         </p>
                                     </> : <>
                                         <label htmlFor="imageInput" className={style.label_image_undone}>Sube una foto de tu DNI</label>
-                                        <input type="file" id="imageInput" name="idDoc" onChange={uploadImage}/>
+                                        <input type="file" id="imageInput" name="fotoDocumento" onChange={uploadImage}/>
                                         <br/>
                                         <p>
-                                            {errors.idDoc ? errors.idDoc : null}
+                                            {errors.fotoDocumento ? errors.fotoDocumento : null}
                                         </p>
                                     </>
                                 }
@@ -142,11 +143,11 @@ const FormParent = () => {
                                 </div>
                             </div>
                             <div className={style.second_first_container_second_line}>
-                                <div className={style.container_contactCellphone}>
-                                    <label htmlFor="contactCellphone">Celular:</label>
-                                    <input value={newParent.contactCellphone} onChange={handleChange} type="text" name='contactCellphone'/>
+                                <div className={style.container_idDoc}>
+                                    <label htmlFor="idDoc">Documento de identidad:</label>
+                                    <input value={newParent.idDoc} onChange={handleChange} type="text" name='idDoc'/>
                                     <br />
-                                    <p>{errors.contactCellphone ? errors.contactCellphone: null}</p>
+                                    <p>{errors.idDoc ? errors.idDoc: null}</p>
                                 </div>
                                 <div className={style.container_email}>
                                     <label htmlFor="email">Email:</label>
@@ -184,6 +185,12 @@ const FormParent = () => {
                                 <input value={newParent.jobTelephone} onChange={handleChange} type="text" name='jobTelephone'/>
                                 <br />
                                 <p>{errors.jobTelephone ? errors.jobTelephone: null}</p>
+                            </div>
+                            <div className={style.container_contactCellphone}>
+                                <label htmlFor="contactCellphone">Celular:</label>
+                                <input value={newParent.contactCellphone} onChange={handleChange} type="text" name='contactCellphone'/>
+                                <br />
+                                <p>{errors.contactCellphone ? errors.contactCellphone: null}</p>
                             </div>
                         </div>
                         <div className={style.second_second_container}>
