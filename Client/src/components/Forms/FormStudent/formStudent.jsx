@@ -123,7 +123,7 @@ const FormStudent = () => {
                 {
                   <img
                     src={image}
-                    alt="Foto del documento"
+                    alt="Foto del estudiante"
                     className={style.image_student}
                   />
                 }
@@ -133,11 +133,11 @@ const FormStudent = () => {
                 <input
                   type="file"
                   id="imageOutput"
-                  name="idDoc"
+                  name="fotoStudent"
                   onChange={uploadImage}
                 />
                 <br />
-                <p>{errors.idDoc ? errors.idDoc : null}</p>
+                <p>{errors.fotoStudent ? errors.fotoStudent : null}</p>
               </>
             }
 

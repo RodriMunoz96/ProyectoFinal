@@ -28,8 +28,8 @@
   font-size: 26px;
 }
 .form {
-  height: 1200px;
-  width: 80%;
+  height: auto;
+  width: 120%;
   background-color: #fff;
   box-shadow: 2px 0 6px -1px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1),
     -2px 0 6px -1px rgba(0, 0, 0, 0.1);
@@ -74,8 +74,8 @@
 
 .container_image {
   position: relative;
-  width: 250px;
-  height: 300px;
+  width: 150px;
+  height: 200px;
   background-color: rgba(128, 128, 128, 0.341);
   border: 1px solid gray;
   display: flex;
@@ -92,8 +92,8 @@
   font-size: 11px;
 }
 .image_student {
-  height: 300px;
-  width: 250px;
+  height: 150px;
+  width: 100px;
 }
 .label_image_done {
   position: absolute;
@@ -119,7 +119,7 @@
 /* IMAGE CLOUDINARY */
 
 .second_container {
-  padding-left: 20px;
+  padding-left: 0px;
 }
 .container_telephone,
 .container_jobTelephone,
