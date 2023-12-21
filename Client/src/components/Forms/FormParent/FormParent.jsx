@@ -3,10 +3,11 @@ import { useDispatch } from "react-redux";
 import style from "./formParent.module.css";
 import { createParent } from "../../../redux/actions/actions-parents.js";
 import { validation } from "./validation.js";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const FormParent = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const arrow = '<---'
     const [ errors, setErrors ] = useState({})
     const [ loading, setLoading ] = useState(false)
@@ -90,6 +91,7 @@ const FormParent = () => {
             tutor: true,
             // userId: "19302f1a-93d1-4473-a151-c4df39df503c"
         });
+        navigate('/viewParent/addNewChild')
     };
 
   return (
