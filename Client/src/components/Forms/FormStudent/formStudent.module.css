@@ -1,6 +1,15 @@
+.containerForm {
+  width: 80%; /* Porcentaje del ancho del contenedor principal */
+  max-width: 1200px; /* Establece un ancho máximo para evitar que se estire demasiado */
+  margin: 0 auto; /* Centra el contenedor horizontalmente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
 .container_form {
   width: 100%;
-  height: 1050px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,9 +91,9 @@
   color: red;
   font-size: 11px;
 }
-.image_parent {
-  height: 100%;
-  width: 100%;
+.image_student {
+  height: 300px;
+  width: 250px;
 }
 .label_image_done {
   position: absolute;
@@ -231,4 +240,11 @@
   background-color: rgb(22, 25, 74, 0.549);
   color: #ffffff89;
   border: none;
+}
+@media (max-width: 600px) {
+  .containerForm {
+    display: flex;
+    direction: column;
+    width: 100%; /* Ajusta el tamaño para pantallas más pequeñas */
+  }
 }
