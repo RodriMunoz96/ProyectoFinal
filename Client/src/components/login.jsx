@@ -3,6 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { loginUser } from "../redux/actions/actions-login";
+//import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,63 @@ const Login = () => {
     dispatch(loginUser(loginData));
     console.log("iniciando sesión", loginData);
   };
+
+  // Frontend example to send token to verify :
+
+  // Function to send an authenticated request with Axios using callbacks
+  // const sendAuthenticatedRequest = (
+  //   url,
+  //   method = "GET",
+  //   data = null,
+  //   successCallback,
+  //   errorCallback
+  // ) => {
+  //   // Retrieve the token from sessionStorage
+  //   const token = sessionStorage.getItem("your_jwt_token_key");
+
+  //   // If token is not present, invoke the error callback
+  //   if (!token) {
+  //     // Handle the absence of a token (e.g., redirect to login)
+  //     errorCallback(new Error("No JWT token found"));
+  //     return;
+  //   }
+
+  //   // Set the Authorization header with the token
+  //   const headers = {
+  //     Authorization: `Bearer ${token}`,
+  //     "Content-Type": "application/json", // Adjust content type as needed
+  //   };
+
+  //   // Make the Axios request
+  //   axios({
+  //     url,
+  //     method,
+  //     headers,
+  //     data,
+  //   })
+  //     .then((response) => {
+  //       // Invoke the success callback with the response data
+  //       successCallback(response.data);
+  //     })
+  //     .catch((error) => {
+  //       // Invoke the error callback with the error
+  //       errorCallback(error);
+  //     });
+  // };
+
+  // // Example usage
+  // const apiEndpoint = "http://localhost:3000/api/auth/authenticate";
+  // sendAuthenticatedRequest(
+  //   apiEndpoint,
+  //   "GET",
+  //   null,
+  //   (responseData) => {
+  //     console.log("Response:", responseData);
+  //   },
+  //   (error) => {
+  //     console.error("Error:", error.message);
+  //   }
+  // );
 
   return (
     <Container
