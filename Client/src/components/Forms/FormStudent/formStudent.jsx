@@ -54,7 +54,6 @@ const FormStudent = () => {
         [event.target.name]: event.target.value,
       };
       validation(newNewStudent, errors, setErrors, event);
-      console.log(newStudent);
       return newNewStudent;
     });
   };
