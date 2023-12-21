@@ -7,10 +7,6 @@ const validate = (input) => {
   );
   let validatePassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
 
-  if (!input.username) errors.username = "Escriba un usuario";
-  if (input.username.length > 25)
-    errors.username = "Deben ser menos de 25 caracteres";
-
   if (input.email.length === 0) errors.email = "Por favor ingrese un email";
   if (!validateEmail.test(input.email))
     errors.email = "El email ingresado no es válido";

@@ -12,6 +12,9 @@ import {
   GET_PARENT,
   UPDATE_PARENT,
   DELETE_PARENT,
+  LOGIN_USER_REQUEST,
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAILURE,
 } from "./action-types";
 
 const initialState = {
@@ -22,6 +25,9 @@ const initialState = {
   student: {},
   allParents: [],
   parent: {},
+  token: null,
+  loading: false,
+  error: null,
 };
 
 const rootReducer = (state = initialState, { type, payload }) => {
@@ -105,6 +111,15 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allParents: state.allParents.filter((parent) => parent.id !== payload),
       };
+
+    case LOGIN_USER_REQUEST:
+      return { ...state, loading: true, error: null };
+    case LOGIN_USER_SUCCESS: {
+      const { token, userId } = payload;
+      return { ...state, loading: false, token, loggedUser: { id: userId } };
+    }
+    case LOGIN_USER_FAILURE:
+      return { ...state, loading: false, error: payload };
 
     default:
       return state;
