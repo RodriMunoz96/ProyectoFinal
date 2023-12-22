@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createUser } from "../../../redux/actions/actions-user";
 import validate from "./validateUserForm";
 
 const AddUserForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: "",
@@ -54,6 +56,8 @@ const AddUserForm = () => {
 
     dispatch(createUser(user));
     console.log(user);
+
+    navigate("/login");
   };
 
   return (

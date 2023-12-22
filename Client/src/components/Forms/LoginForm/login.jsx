@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button, Container } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../redux/actions/actions-login";
 import validate from "./validateLogin";
 //import axios from "axios";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const authToken = useSelector((state) => state.token);
 
   const [loginData, setLoginData] = useState({
     email: "",
@@ -43,6 +45,12 @@ const Login = () => {
     console.log("iniciando sesión", loginData);
   };
 
+  useEffect(() => {
+    if (authToken) {
+      navigate("/formParent");
+    }
+  }, [authToken, navigate]);
+
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
@@ -58,8 +66,8 @@ const Login = () => {
             name="email"
             placeholder="Ingrese su correo"
             onChange={handleChange}
+            required
           />
-          {error.email && <span style={{ color: "red" }}>{error.email}</span>}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -69,10 +77,8 @@ const Login = () => {
             name="password"
             placeholder="Ingrese su contraseña"
             onChange={handleChange}
+            required
           />
-          {error.password && (
-            <span style={{ color: "red" }}>{error.password}</span>
-          )}
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicCheckbox">

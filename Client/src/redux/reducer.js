@@ -18,7 +18,6 @@ import {
 } from "./action-types";
 
 const initialState = {
-  loggedUser: {},
   allUsers: [],
   user: {},
   allStudents: [],

@@ -13,7 +13,7 @@ export const loginUserRequest = () => ({ type: LOGIN_USER_REQUEST });
 
 export const loginUserSuccess = (token) => {
   sessionStorage.setItem("token", token);
-  console.log("Token almacenado en localStorage:", token);
+  console.log("Token almacenado en sessionStorage:", token);
 
   const decodedToken = jwtDecode(token);
   const userId = decodedToken.userId;
@@ -49,5 +49,9 @@ export const loginUser = (loginData) => async (dispatch) => {
 
 export const logoutUser = () => {
   localStorage.removeItem("token");
+  localStorage.removeItem("userId");
+
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("userId");
   return { type: LOGOUT_USER };
 };
