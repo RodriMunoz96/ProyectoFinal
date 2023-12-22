@@ -2,7 +2,7 @@ import Navbar1 from "./components/Navbar";
 import HomePage from "./peges/HomePage";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
-import Login from "./components/login";
+import Login from "./components/Forms/LoginForm/login";
 import FormParent from "./components/Forms/FormParent/FormParent";
 import QuienesSomos from "./peges/QuienesSomos";
 import QueTeOfrecemos from "./components/QueTeOfrecemos";

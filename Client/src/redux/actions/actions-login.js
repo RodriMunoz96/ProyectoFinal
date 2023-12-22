@@ -12,12 +12,13 @@ const URL = "http://localhost:3000/login";
 export const loginUserRequest = () => ({ type: LOGIN_USER_REQUEST });
 
 export const loginUserSuccess = (token) => {
-  localStorage.setItem("token", token);
+  sessionStorage.setItem("token", token);
+  console.log("Token almacenado en localStorage:", token);
 
   const decodedToken = jwtDecode(token);
   const userId = decodedToken.userId;
 
-  localStorage.setItem("userId", userId);
+  sessionStorage.setItem("userId", userId);
 
   return { type: LOGIN_USER_SUCCESS, payload: token };
 };
@@ -28,12 +29,14 @@ export const loginUserFailure = (error) => ({
 });
 
 export const loginUser = (loginData) => async (dispatch) => {
+  console.log("Logindata:", loginData);
   dispatch(loginUserRequest());
   try {
     const response = await axios.post(URL, loginData);
-    const { token, userId } = response.data;
-    dispatch(loginUserSuccess(token, userId));
+    console.log("Respuesta del servidor:", response.data);
+    dispatch(loginUserSuccess(response.data.token));
   } catch (error) {
+    console.error("Error en la autenticación:", error);
     dispatch(
       loginUserFailure(
         error.response
