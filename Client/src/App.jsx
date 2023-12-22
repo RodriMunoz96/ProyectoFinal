@@ -11,29 +11,36 @@ import NotFound from "./peges/NotFound";
 import NuestroEquipo from "./peges/NuestroEquipo";
 import AddUserForm from "./components/Forms/addUserForm/addUserForm";
 import Contacto from "./peges/Contacto";
+import ViewParent from "./components/ViewParent/ViewParent";
 
 function App() {
   const location = useLocation();
 
   return (
     <>
-      {location.pathname !== "/formParent" ? <Navbar1 /> : null}
+      { ( location.pathname !== "/formParent" && 
+          location.pathname !== "/viewParent/myChildren" &&
+          location.pathname !== "/viewParent/myProfile" &&
+          location.pathname !== "/viewParent/addNewChild") ? <Navbar1 /> : null}
       {/* <Navbar1 /> */}
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/formParent" element={<FormParent />} />
+        <Route path="/viewParent/:id" element={<ViewParent/>}/>
         <Route exact path="/QuienesSomos" element={<QuienesSomos />} />
         <Route exact path="/oferta" element={<QueTeOfrecemos />} />
         <Route exact path="/porqueelegir" element={<PorQueElegir />} />
         <Route exact path="/nuestroequipo" element={<NuestroEquipo />} />
         <Route exact path="/addUser" element={<AddUserForm />} />
         <Route exact path="/contacto" element={<Contacto />} />
-
         <Route exact path="/*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}
-      {location.pathname !== "/formParent" ? <Footer /> : null}
+      { ( location.pathname !== "/formParent" && 
+          location.pathname !== "/viewParent/myChildren" &&
+          location.pathname !== "/viewParent/myProfile" &&
+          location.pathname !== "/viewParent/addNewChild") ? <Footer /> : null}
     </>
   );
 }
