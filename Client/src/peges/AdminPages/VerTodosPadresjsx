@@ -1,0 +1,32 @@
+import React from 'react';
+import { Container, Table } from 'react-bootstrap';
+
+const VerTodosPadres = () => {
+  return (
+    <Container>
+      <h2>Ver Todos los Padres</h2>
+      {/* Agrega la tabla o lista de todos los padres */}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            {/* ... (añade más encabezados según sea necesario) */}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Nombre del Padre 1</td>
+            <td>correo@padre1.com</td>
+            {/* ... (añade más filas según sea necesario) */}
+          </tr>
+        </tbody>
+      </Table>
+    </Container>
+  );
+};
+
+export default VerTodosPadres;
+

@@ -1,0 +1,40 @@
+import React, { useEffect, useState } from 'react';
+import { Container, Table } from 'react-bootstrap';
+
+const VerTodosPadres = () => {
+  const [padres, setPadres] = useState([]);
+
+  useEffect(() => {
+    // Fetch data from the API
+    fetch('http://localhost:3000/user?type=Parents')
+      .then((response) => response.json())
+      .then((data) => setPadres(data))
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
+
+  return (
+    <Container>
+      <h2 className="mt-4 mb-4">Ver Todos los Padres</h2>
+      <Table responsive striped bordered hover>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo Electrónico</th>
+          </tr>
+        </thead>
+        <tbody>
+          {padres.map((padre) => (
+            <tr key={padre.id}>
+              <td>{padre.id}</td>
+              <td>{padre.nombre} {padre.apellidoPaterno} {padre.apellidoMaterno}</td>
+              <td>{padre.email}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Container>
+  );
+};
+
+export default VerTodosPadres;

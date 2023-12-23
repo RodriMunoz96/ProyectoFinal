@@ -29,7 +29,7 @@ function Navbar1() {
             </NavDropdown>
             <NavDropdown title="Ingresar" id="basic-nav-dropdown">
               <NavDropdown.Item href="login">Usuario</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
+              <NavDropdown.Item href="Admin">
                 Administrador
               </NavDropdown.Item>
             </NavDropdown>
