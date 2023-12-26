@@ -29,6 +29,7 @@ const VerTodosPadres = () => {
               <td>{padre.id}</td>
               <td>{padre.nombre} {padre.apellidoPaterno} {padre.apellidoMaterno}</td>
               <td>{padre.email}</td>
+              
             </tr>
           ))}
         </tbody>
