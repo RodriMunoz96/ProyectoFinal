@@ -74,8 +74,8 @@
 
 .container_image {
   position: relative;
-  width: 150px;
-  height: 200px;
+  width: 50px;
+  height: 30px;
   background-color: rgba(128, 128, 128, 0.341);
   border: 1px solid gray;
   display: flex;
@@ -92,8 +92,8 @@
   font-size: 11px;
 }
 .image_student {
-  height: 150px;
-  width: 100px;
+  height: 50px;
+  width: 30px;
 }
 .label_image_done {
   position: absolute;
@@ -120,6 +120,8 @@
 
 .second_container {
   padding-left: 0px;
+  height: 150;
+  width: 100;
 }
 .container_telephone,
 .container_jobTelephone,
