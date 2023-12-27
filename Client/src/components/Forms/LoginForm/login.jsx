@@ -35,9 +35,10 @@ const Login = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
 
     setError({ ...error, [e.target.name]: e.target.value });
+    console.log("loginData", loginData);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     dispatch(loginUser(loginData));
