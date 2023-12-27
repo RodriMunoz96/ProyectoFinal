@@ -2,7 +2,7 @@ import Navbar1 from "./components/Navbar";
 import HomePage from "./peges/HomePage";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
-import Login from "./components/login";
+import Login from "./components/Forms/LoginForm/login";
 import FormParent from "./components/Forms/FormParent/FormParent";
 import QuienesSomos from "./peges/QuienesSomos";
 import QueTeOfrecemos from "./components/QueTeOfrecemos";
@@ -18,16 +18,18 @@ function App() {
 
   return (
     <>
-      { ( location.pathname !== "/formParent" && 
-          location.pathname !== "/viewParent/myChildren" &&
-          location.pathname !== "/viewParent/myProfile" &&
-          location.pathname !== "/viewParent/addNewChild") ? <Navbar1 /> : null}
+      {location.pathname !== "/formParent" &&
+      location.pathname !== "/viewParent/myChildren" &&
+      location.pathname !== "/viewParent/myProfile" &&
+      location.pathname !== "/viewParent/addNewChild" ? (
+        <Navbar1 />
+      ) : null}
       {/* <Navbar1 /> */}
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/formParent" element={<FormParent />} />
-        <Route path="/viewParent/:id" element={<ViewParent/>}/>
+        <Route path="/viewParent/:id" element={<ViewParent />} />
         <Route exact path="/QuienesSomos" element={<QuienesSomos />} />
         <Route exact path="/oferta" element={<QueTeOfrecemos />} />
         <Route exact path="/porqueelegir" element={<PorQueElegir />} />
@@ -37,10 +39,12 @@ function App() {
         <Route exact path="/*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}
-      { ( location.pathname !== "/formParent" && 
-          location.pathname !== "/viewParent/myChildren" &&
-          location.pathname !== "/viewParent/myProfile" &&
-          location.pathname !== "/viewParent/addNewChild") ? <Footer /> : null}
+      {location.pathname !== "/formParent" &&
+      location.pathname !== "/viewParent/myChildren" &&
+      location.pathname !== "/viewParent/myProfile" &&
+      location.pathname !== "/viewParent/addNewChild" ? (
+        <Footer />
+      ) : null}
     </>
   );
 }

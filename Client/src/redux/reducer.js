@@ -18,7 +18,6 @@ import {
 } from "./action-types";
 
 const initialState = {
-  loggedUser: {},
   allUsers: [],
   user: {},
   allStudents: [],
@@ -114,10 +113,10 @@ const rootReducer = (state = initialState, { type, payload }) => {
 
     case LOGIN_USER_REQUEST:
       return { ...state, loading: true, error: null };
-    case LOGIN_USER_SUCCESS: {
-      const { token, userId } = payload;
-      return { ...state, loading: false, token, loggedUser: { id: userId } };
-    }
+
+    case LOGIN_USER_SUCCESS:
+      return { ...state, loading: false, token: payload };
+
     case LOGIN_USER_FAILURE:
       return { ...state, loading: false, error: payload };
 
