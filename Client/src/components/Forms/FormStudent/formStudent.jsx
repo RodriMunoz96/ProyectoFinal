@@ -6,6 +6,7 @@ import validation from "../FormStudent/validation";
 import { NavLink } from "react-router-dom";
 
 const FormStudent = () => {
+  const parentId = sessionStorage.getItem("userId");
   //const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(
     "https://res.cloudinary.com/dotfhd8de/image/upload/v1703046773/dataSchool/6f57760966a796644b8cfb0fbc449843_ctehip.png"
@@ -81,6 +82,7 @@ const FormStudent = () => {
       fotoPerfil: "",
       fotoDocumento: "",
       state: true,
+      parentId: parentId,
     });
   };
 
@@ -245,6 +247,10 @@ const FormStudent = () => {
               name="contactoEmerg"
             />
             <p>{errors.contactoEmerg ? errors.contactoEmerg : null}</p>
+
+            <label htmlFor="fotoDocumento">
+              Foto del documento de identidad:
+            </label>
             <input
               type="file"
               id="imageDocumentOutput"
@@ -252,7 +258,7 @@ const FormStudent = () => {
               onChange={uploadImage}
             />
             <br />
-            <p>{errors.fotoDocumentp ? errors.fotoDocumento : null}</p>
+            <p>{errors.fotoDocumento ? errors.fotoDocumento : null}</p>
           </div>
         </div>
         <button type="submit" className={style.submit_button}>
