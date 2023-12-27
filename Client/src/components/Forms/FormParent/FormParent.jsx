@@ -1,13 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import style from "./formParent.module.css";
 import { createParent } from "../../../redux/actions/actions-parents.js";
 import { validation } from "./validation.js";
 import { NavLink, useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../../redux/actions/actionAuth.js";
 
 const FormParent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const authenticate = () => {
+      try {
+        const result = dispatch(authenticateUser());
+        console.log("Result of authentication:", result);
+
+        if (result.success === true) {
+          navigate("/");
+        }
+      } catch (error) {
+        console.error("Error during authentication:", error);
+        navigate("/");
+      }
+    };
+
+    authenticate();
+  }, [dispatch, navigate]);
+
   const arrow = "<---";
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
