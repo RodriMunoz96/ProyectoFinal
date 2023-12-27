@@ -4,32 +4,10 @@ import style from "./formParent.module.css";
 import { createParent } from "../../../redux/actions/actions-parents.js";
 import { validation } from "./validation.js";
 import { NavLink, useNavigate } from "react-router-dom";
-// import { authenticateUser } from "../../../redux/actions/actionAuth.js";
 
 const FormParent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //? Esta parte comentada es lo que dispara la acción que hace la verificación del token en el back cuando se renderiza el formulario. Ahora mismo rompe todo, por lo que está todo comentado
-
-  // useEffect(() => {
-  //   const authenticate = () => {
-  //     try {
-  //       const result = dispatch(authenticateUser());
-  //       console.log("Result of authentication:", result);
-
-  //       if (!result.success) {
-  //         navigate("/");
-  //       }
-  //     } catch (error) {
-  //       console.error("Error during authentication:", error);
-  //       navigate("/");
-  //     }
-  //   };
-
-  //   authenticate();
-  // }, [dispatch, navigate]);
-
   const arrow = "<---";
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
