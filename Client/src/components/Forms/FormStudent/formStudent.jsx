@@ -6,7 +6,8 @@ import validation from "../FormStudent/validation";
 import { NavLink } from "react-router-dom";
 
 const FormStudent = () => {
-  const [loading, setLoading] = useState(false);
+  const parentId = sessionStorage.getItem("userId");
+  //const [loading, setLoading] = useState(false);
   const [image, setImage] = useState(
     "https://res.cloudinary.com/dotfhd8de/image/upload/v1703046773/dataSchool/6f57760966a796644b8cfb0fbc449843_ctehip.png"
   );
@@ -54,7 +55,6 @@ const FormStudent = () => {
         [event.target.name]: event.target.value,
       };
       validation(newNewStudent, errors, setErrors, event);
-      console.log(newStudent);
       return newNewStudent;
     });
   };
@@ -63,7 +63,9 @@ const FormStudent = () => {
     event.preventDefault();
 
     dispatch(createStudent({ ...newStudent }));
-
+    setImage(
+      "https://res.cloudinary.com/dotfhd8de/image/upload/v1703046773/dataSchool/6f57760966a796644b8cfb0fbc449843_ctehip.png"
+    );
     setNewStudent({
       idDocumento: "",
       nombres: "",
@@ -80,6 +82,7 @@ const FormStudent = () => {
       fotoPerfil: "",
       fotoDocumento: "",
       state: true,
+      parentId: parentId,
     });
   };
 
@@ -88,7 +91,7 @@ const FormStudent = () => {
     const data = new FormData();
     data.append("file", files[0]);
     data.append("upload_preset", "nmxly1pm");
-    setLoading(true);
+    //setLoading(true);
     const res = await fetch(
       `https://api.cloudinary.com/v1_1/dxi3fh6kr/image/upload`,
       {
@@ -100,7 +103,7 @@ const FormStudent = () => {
     console.log(res);
     console.log(file);
     setImage(file.secure_url);
-    setLoading(false);
+    //setLoading(false);
     setNewStudent({
       ...newStudent,
       idDoc: file.secure_url,
@@ -120,13 +123,12 @@ const FormStudent = () => {
           <div className={style.container_label_inputs}>
             {
               <>
-                {
-                  <img
-                    src={image}
-                    alt="Foto del estudiante"
-                    className={style.image_student}
-                  />
-                }
+                <img
+                  src={image}
+                  alt="Foto del estudiante"
+                  className={style.image_student}
+                />
+
                 {/* <label htmlFor="imageOutput" className={style.label_image_done}>
                   +
                 </label> */}
@@ -246,21 +248,17 @@ const FormStudent = () => {
             />
             <p>{errors.contactoEmerg ? errors.contactoEmerg : null}</p>
 
-            <label htmlFor="fotoPerfil">Foto de perfil:</label>
+            <label htmlFor="fotoDocumento">
+              Foto del documento de identidad:
+            </label>
             <input
-              value={newStudent.fotoPerfil}
-              onChange={handleChange}
-              type="number"
-              name="fotoPerfil"
+              type="file"
+              id="imageDocumentOutput"
+              name="fotoDocument"
+              onChange={uploadImage}
             />
-
-            <label htmlFor="contactoEmerg">Contacto de emergencia:</label>
-            <input
-              value={newStudent.contactoEmerg}
-              onChange={handleChange}
-              type="number"
-              name="contactoEmerg"
-            />
+            <br />
+            <p>{errors.fotoDocumento ? errors.fotoDocumento : null}</p>
           </div>
         </div>
         <button type="submit" className={style.submit_button}>
