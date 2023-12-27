@@ -30,10 +30,13 @@ export const loginUserFailure = (error) => ({
 
 export const loginUser = (loginData) => async (dispatch) => {
   console.log("Logindata:", loginData);
+
   dispatch(loginUserRequest());
   try {
     const response = await axios.post(URL, loginData);
+
     console.log("Respuesta del servidor:", response.data);
+    
     dispatch(loginUserSuccess(response.data.token));
   } catch (error) {
     console.error("Error en la autenticación:", error);
