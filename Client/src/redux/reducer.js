@@ -12,6 +12,7 @@ import {
   GET_PARENT,
   UPDATE_PARENT,
   DELETE_PARENT,
+  REGISTER_PARENT,
 } from "./action-types";
 
 // Define el estado inicial del almacenamiento Redux para estudiantes
@@ -107,7 +108,11 @@ const rootReducer = (state = initialState, { type, payload }) => {
         ...state,
         allParents: state.allParents.filter((parent) => parent.id !== payload),
       };
-
+      case REGISTER_PARENT:
+        return {
+          ...state,
+          allParents: [...state.allParents, payload],
+        };
     default:
       return state;
   }

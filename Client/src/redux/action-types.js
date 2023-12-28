@@ -12,5 +12,7 @@ export const GET_ALL_PARENTS = "GET_ALL_PARENTS";
 export const GET_PARENT = "GET_PARENT";
 export const UPDATE_PARENT = "UPDATE_PARENT";
 export const DELETE_PARENT = "DELETE_PARENT";
+export const REGISTER_PARENT = "REGISTER_PARENT";
+
 
 export const SET_USER_ACTIVE = "SET_USER_ACTIVE";
