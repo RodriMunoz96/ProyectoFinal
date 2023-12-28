@@ -4,7 +4,9 @@ const validate = (input) => {
     /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
     "gm"
   );
-  let validatePassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/);
+  let validatePassword = new RegExp(
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-.,:;<>,.?~\\/[\]{}]).{8,16}$/
+  );
 
   if (input.email.length === 0) errors.email = "Por favor ingrese un email";
   if (!validateEmail.test(input.email))
