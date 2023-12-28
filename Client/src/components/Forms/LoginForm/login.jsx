@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../redux/actions/actions-login";
 import validate from "./validateLogin";
-//import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -35,7 +35,6 @@ const Login = () => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
 
     setError({ ...error, [e.target.name]: e.target.value });
-    console.log("loginData", loginData);
   };
 
   const handleSubmit = async (event) => {
@@ -47,7 +46,10 @@ const Login = () => {
 
   useEffect(() => {
     if (authToken) {
-      navigate("/formParent");
+      const decodedToken = jwtDecode(authToken);
+      const userId = decodedToken.userId;
+
+      navigate(`/viewParent/${userId}`);
     }
   }, [authToken, navigate]);
 

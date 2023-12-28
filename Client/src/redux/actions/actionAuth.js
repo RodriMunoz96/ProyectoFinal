@@ -8,17 +8,14 @@ export const authenticateUser = () => async () => {
     return { success: false };
   }
 
-  // const headers = {
-  //   Authorization: `Bearer ${token}`,
-  //   "Content-Type": "application/json",
-  // };
   try {
-    console.log("Token before request:", token);
     const response = await axios.get("http://localhost:3000/authenticate", {
       headers: { Authorization: token },
     });
+    const sessionUserId = response.data.userId.userId;
 
-    console.log("Token verification successful:", response.data);
+    console.log("Token verification successful:", sessionUserId);
+    sessionStorage.setItem("userId", sessionUserId);
 
     return { success: true };
   } catch (error) {

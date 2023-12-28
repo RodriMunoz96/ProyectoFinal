@@ -16,7 +16,7 @@ const FormParent = () => {
         const result = dispatch(authenticateUser());
         console.log("Result of authentication:", result);
 
-        if (result.success === true) {
+        if (result.success === false) {
           navigate("/");
         }
       } catch (error) {
