@@ -27,7 +27,7 @@ function Navbar1() {
                 Nuestro Equipo
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="login">Ingresar</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>
