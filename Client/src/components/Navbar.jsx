@@ -27,13 +27,7 @@ function Navbar1() {
                 Nuestro Equipo
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Ingresar" id="basic-nav-dropdown">
-              <NavDropdown.Item href="login">Usuario</NavDropdown.Item>
-              <NavDropdown.Item href="Admin">
-                Administrador
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="addUser">Registrarse</Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
       </Container>

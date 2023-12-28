@@ -68,7 +68,7 @@
     position: relative;
     width: 250px;
     height: 300px;
-    background-color: rgba(128, 128, 128, 0.341);
+    background-color: rgba(218, 212, 212, 0.293);
     border: 1px solid gray;
     display: flex;
     justify-content: center;
@@ -100,9 +100,11 @@
     cursor: pointer;
 }
 .label_image_undone{
-    background-color: rgb(255, 255, 255);
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    padding: 2px 5px;
+    background-color: rgba(212, 210, 210, 0.371);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    padding: 2px 8px;
+    color: black;
+    font-weight: bold;
     border-radius: 3px;
     text-align: center;
     cursor: pointer;
@@ -121,12 +123,12 @@
     flex-direction: row;
     width: 100%;
 }
-.container_educationLevel, .container_contactCellphone,
+.container_educationLevel, .container_idDoc,
 .container_profession,  .container_email,
 .container_name, .container_lastName {
     width: 50%;
 }
-.container_educationLevel input,  .container_contactCellphone input,
+.container_educationLevel input,  .container_idDoc input,
 .container_profession input,  .container_email input,
 .container_name input, .container_lastName input {
     width: 95%;
@@ -144,11 +146,11 @@
     display: flex;
     width: 100%;
 }
-.container_telephone, .container_jobTelephone {
+.container_telephone, .container_jobTelephone, .container_contactCellphone {
     width: 100%;
 }
-.container_telephone input, .container_jobTelephone input{
-    width: 95%;
+.container_telephone input, .container_jobTelephone input, .container_contactCellphone input{
+    width: 93.7%;
     border-radius: 3px;
     border: 1px solid black;
 }
@@ -162,7 +164,7 @@
 }
 .container_address input ,
 .container_jobAddress input {
-    width: 95%;
+    width: 95.7%;
     border-radius: 3px;
     border: 1px solid black;
 }

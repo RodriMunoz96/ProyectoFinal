@@ -5,11 +5,7 @@ const validate = (input) => {
     /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/,
     "gm"
   );
-  let validatePassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/);
-
-  if (!input.username) errors.username = "Escriba un usuario";
-  if (input.username.length > 25)
-    errors.username = "Deben ser menos de 25 caracteres";
+  let validatePassword = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/);
 
   if (input.email.length === 0) errors.email = "Por favor ingrese un email";
   if (!validateEmail.test(input.email))
@@ -17,7 +13,7 @@ const validate = (input) => {
 
   if (!validatePassword.test(input.password))
     errors.password =
-      "La contraseña debe incluir al menos 1 minúscula, 1 mayúscula, 1 número y contener entre 6 y 20 caracteres";
+      "La contraseña debe incluir al menos 1 minúscula, 1 mayúscula, 1 número, 1 caracter especial y contener entre 8 y 16 caracteres";
 
   if (!input.nombre) errors.nombre = "Escriba un nombre";
   if (input.nombre.length > 20)
