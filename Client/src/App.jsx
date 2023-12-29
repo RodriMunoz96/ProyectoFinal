@@ -11,7 +11,9 @@ import NotFound from "./peges/NotFound";
 import NuestroEquipo from "./peges/NuestroEquipo";
 import AddUserForm from "./components/Forms/addUserForm/addUserForm";
 import Contacto from "./peges/Contacto";
-
+import ViewParent from "./components/ViewParent/ViewParent";
+import FormStudent from "./components/Forms/FormStudent/formStudent";
+import Admin from "./peges/Admin";
 
 function App() {
   const location = useLocation();
@@ -39,7 +41,7 @@ function App() {
         <Route exact path="/addUser" element={<AddUserForm />} />
         <Route exact path="/contacto" element={<Contacto />} />
         <Route exact path="/Admin" element={<Admin />} />
-        
+
         <Route exact path="/*" element={<NotFound />} />
       </Routes>
       {/* <Footer /> */}

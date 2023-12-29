@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../../../redux/actions/actions-login";
 import validate from "./validateLogin";
-import { jwtDecode } from "jwt-decode";
+// import { jwtDecode } from "jwt-decode";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -46,10 +46,10 @@ const Login = () => {
 
   useEffect(() => {
     if (authToken) {
-      const decodedToken = jwtDecode(authToken);
-      const userId = decodedToken.userId;
+      // const decodedToken = jwtDecode(authToken);
+      // const userId = decodedToken.userId;
 
-      navigate(`/viewParent/${userId}`);
+      navigate("/viewParent/myProfile");
     }
   }, [authToken, navigate]);
 
