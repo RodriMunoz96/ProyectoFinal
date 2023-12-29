@@ -97,7 +97,7 @@ const FormParent = () => {
   return (
     <>
         <div className={style.container_form}>
-            <NavLink to={"/"} className={style.button_back_home}>
+            <NavLink to={"/viewParent/addNewChild"} className={style.button_back_home}>
                 {arrow} Volver a la página principal
             </NavLink>
             <form onSubmit={onSubmit} className={style.form}>
