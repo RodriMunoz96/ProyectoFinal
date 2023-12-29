@@ -12,6 +12,7 @@ const FormParent = () => {
     const [ errors, setErrors ] = useState({})
     const [ loading, setLoading ] = useState(false)
     const [ image, setImage ] = useState(null)
+    const ID = sessionStorage.getItem("userId")
     const [ newParent, setNewParent ] = useState({
         fotoDocumento: "", //image
         idDoc: "", 
@@ -26,7 +27,7 @@ const FormParent = () => {
         contactCellphone: "",
         email: "",
         tutor: true,
-        // userId: "19302f1a-93d1-4473-a151-c4df39df503c"
+        userId: ID
     })
 
     const handleChange = (e) => {
@@ -89,7 +90,7 @@ const FormParent = () => {
             contactCellphone: "",
             email: "",
             tutor: true,
-            // userId: "19302f1a-93d1-4473-a151-c4df39df503c"
+            userId: ID
         });
         navigate('/viewParent/addNewChild')
     };
