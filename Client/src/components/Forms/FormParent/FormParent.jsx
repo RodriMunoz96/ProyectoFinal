@@ -12,7 +12,7 @@ const FormParent = () => {
     const [ errors, setErrors ] = useState({})
     const [ loading, setLoading ] = useState(false)
     const [ image, setImage ] = useState(null)
-    const ID = sessionStorage.getItem("userId")
+    const ID = sessionStorage.getItem("userId") // TRAE EL ID
     const [ newParent, setNewParent ] = useState({
         fotoDocumento: "", //image
         idDoc: "", 
@@ -98,7 +98,7 @@ const FormParent = () => {
   return (
     <>
         <div className={style.container_form}>
-            <NavLink to={"/viewParent/addNewChild"} className={style.button_back_home}>
+            <NavLink to={"/viewParent/myProfile"} className={style.button_back_home}>
                 {arrow} Volver a la página principal
             </NavLink>
             <form onSubmit={onSubmit} className={style.form}>
