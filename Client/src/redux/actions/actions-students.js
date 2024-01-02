@@ -12,6 +12,7 @@ export const createStudent = (data) => {
   return async () => {
     try {
       const response = await axios.post(URL, data);
+      console.log("Información enviada:", response);
       return response;
     } catch (error) {
       return error.message;
@@ -24,10 +25,10 @@ export const getAllStudents = () => {
     try {
       const { data } = axios.get(URL);
 
-        return dispatch({
-          type: GET_ALL_STUDENTS,
-          payload: data,
-        });   
+      return dispatch({
+        type: GET_ALL_STUDENTS,
+        payload: data,
+      });
     } catch (error) {
       return error.message;
     }

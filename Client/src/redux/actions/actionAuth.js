@@ -12,7 +12,7 @@ export const authenticateUser = () => async () => {
     const response = await axios.get("http://localhost:3000/authenticate", {
       headers: { Authorization: token },
     });
-    const sessionUserId = response.data.userId.userId;
+    const sessionUserId = response.data.user.userId;
 
     console.log("Token verification successful:", sessionUserId);
     sessionStorage.setItem("userId", sessionUserId);
