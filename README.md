@@ -1,2 +1,2 @@
 # ProyectoFinal
-Este es el trabajo en front del repositorio
+Esta es la primera versión del Proyecto Final "EasySchool" desarrollado durante la etapa final del curso de soyHenry
